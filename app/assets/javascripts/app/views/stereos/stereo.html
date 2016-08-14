@@ -3,6 +3,8 @@
   <h4 ng-show="ctrl.stereo.id"> Stereo Profile </h4>
 </div>
 
+<stereo-display stereo="ctrl.stereo"></stereo-display>
+
 <div ng-hide="ctrl.stereo.id">
   <stereo-form stereo="ctrl.stereo" add="ctrl.addStereo()"></stereo-form>
 </div>

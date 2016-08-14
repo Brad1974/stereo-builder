@@ -2,7 +2,7 @@ function StereosController(stereos, $filter) {
 
   var ctrl = this
   ctrl.stereos = stereos.data
-  debugger;
+
 
 
 }
