@@ -1,3 +1,8 @@
 <div class="page-header text-center">
-  <h4> Create New Stereo Profile </h4>
+  <h4 ng-show="!ctrl.stereo.id"> Create New Stereo Profile </h4>
+  <h4 ng-show="ctrl.stereo.id"> Stereo Profile </h4>
+</div>
+
+<div ng-hide="ctrl.stereo.id">
+  <stereo-form stereo="ctrl.stereo" add="ctrl.addStereo()"></stereo-form>
 </div>
