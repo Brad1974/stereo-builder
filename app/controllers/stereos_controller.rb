@@ -1,0 +1,2 @@
+class StereosController < ApplicationController
+end

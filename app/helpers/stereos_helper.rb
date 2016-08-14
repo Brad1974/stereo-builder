@@ -1,0 +1,2 @@
+module StereosHelper
+end
