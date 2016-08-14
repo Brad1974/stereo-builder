@@ -5,5 +5,19 @@ class StereosController < ApplicationController
     @stereos = Stereo.all
     render json: @stereos
   end
-  
+
+  def create
+    binding.pry
+    @stereo = Stereo.new(stereo_params)
+    @stereo.save
+    render json: @stereo, status: 201
+  end
+
+  private
+
+  def stereo_params
+    params.require(:stereo).permit(:name, component_attributes: [:name, :price, :category, :brand])
+  end
+
+
 end
