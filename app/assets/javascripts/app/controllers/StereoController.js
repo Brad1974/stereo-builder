@@ -1,4 +1,4 @@
-function StereoController($filter, components, DataService) {
+function StereoController($state, $stateParams, $filter, components, DataService) {
 
   var ctrl = this
 
@@ -41,10 +41,11 @@ function StereoController($filter, components, DataService) {
     DataService.postStereo(ctrl.stereo)
     .then(function(result){
       ctrl.stereo.id = result.data.id
-      // $state.go('stereos.show', { id: result.data.id });
+      $state.go('home.show', { id: result.data.id });
       alert("stereo created!")
     });
   };
+  debugger;
 
 };
 

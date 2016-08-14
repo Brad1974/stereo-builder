@@ -20,6 +20,17 @@ angular
         }
       }
     })
+    .state('home.show', {
+      url:'stereos/:id',
+      templateUrl: 'app/views/stereos/stereo.html',
+      controller: 'StereoController as ctrl',
+      resolve: {
+        components: function (DataService) {
+          return DataService.getComponents();
+        }
+      }
+    })
+
     .state('home.newStereo', {
       url:'stereos/new',
       templateUrl: 'app/views/stereos/stereo.html',
