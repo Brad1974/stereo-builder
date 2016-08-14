@@ -1,3 +1,9 @@
 <div class="page-header text-center">
   <h4> Stereos Index Page </h4>
 </div>
+
+<div ng-repeat="stereo in ctrl.stereos | filter: ctrl.search ">
+
+<p> {{ stereo.name }} </p>
+
+</div>

@@ -12,7 +12,13 @@ angular
     })
     .state('home.index', {
       url:'stereos',
-      templateUrl: 'app/views/stereos/index.html'
+      templateUrl: 'app/views/stereos/index.html',
+      controller: 'StereosController as ctrl',
+      resolve: {
+        stereos: function (DataService) {
+          return DataService.getStereos();
+        }
+      }
     })
     .state('home.newStereo', {
       url:'stereos/new',
