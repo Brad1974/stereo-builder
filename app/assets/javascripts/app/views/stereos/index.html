@@ -4,6 +4,6 @@
 
 <div ng-repeat="stereo in ctrl.stereos | filter: ctrl.search ">
 
-<p> {{ stereo.name }} </p>
+<a ui-sref="home.show({id: stereo.id})"> {{stereo.name }}</a>
 
 </div>
