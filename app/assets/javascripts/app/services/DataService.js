@@ -9,12 +9,16 @@ function DataService($http) {
   }
 
   this.postStereo = function(newProfile) {
-  return $http.post('/stereos', { stereo: newProfile } )
+    return $http.post('/stereos', { stereo: newProfile } )
   }
 
   this.getComponents = function() {
-  return $http.get('/components.json');
-}
+    return $http.get('/components.json');
+  }
+
+  this.deleteStereo = function(id) {
+    return $http.delete('/stereos/' + id);
+  }
 
 }
 

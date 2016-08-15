@@ -55,7 +55,14 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
       alert("stereo created!")
     });
   };
-  debugger;
+
+  ctrl.deleteStereo = function(){
+      DataService.deleteStereo(ctrl.stereo.id)
+      .then(function(result){
+        alert("stereo deleted");
+        $state.go('home.index');
+      })
+    }
 
 };
 

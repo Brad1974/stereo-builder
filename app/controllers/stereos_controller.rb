@@ -17,6 +17,10 @@ class StereosController < ApplicationController
     render json: @stereo, status: 201
   end
 
+  def destroy
+    Stereo.find(params[:id]).destroy
+  end
+
   private
 
   def stereo_params

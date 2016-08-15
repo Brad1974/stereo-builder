@@ -8,3 +8,5 @@
 <div ng-hide="ctrl.stereo.id">
   <stereo-form stereo="ctrl.stereo" add="ctrl.addStereo()"></stereo-form>
 </div>
+
+<input type="button" value="delete stereo" ng-show="ctrl.stereo.id" ng-click="ctrl.deleteStereo()">
