@@ -1,4 +1,4 @@
-function nameTaken($q, DataService) {
+function nameTaken(DataService) {
   return {
       restrict: 'A',
       require: 'ngModel',
@@ -20,6 +20,3 @@ function nameTaken($q, DataService) {
 angular
     .module('app')
     .directive('nameTaken', nameTaken);
-
-
-    // ((cf.comp.list.filter(function(c){return c.name === cf.name })).length > 0)

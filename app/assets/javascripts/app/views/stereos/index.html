@@ -2,8 +2,24 @@
   <h4> Stereos Index Page </h4>
 </div>
 
-<div ng-repeat="stereo in ctrl.stereos | filter: ctrl.search ">
+
+<div ng-repeat="stereo in ctrl.stereos">
+
+<a ui-sref="home.show({id: stereo.id})" class="list-group-item">
+  <div class="list-group-item-text">
+
+    <h4>Name: {{ stereo.name }}</h4>
+    <p>Receiver: {{ stereo.component_attributes[0].brand }} {{ stereo.component_attributes[0].name }} </p>
+    <p>Speakers: {{ stereo.component_attributes[1].name }} </p>
+    <p>Media Player {{ stereo.component_attributes[2].name }}</p>
+    <h4> Total Cost: {{ stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price | toDollar}} </h4>
+  </div>
+</a>
+<!-- <a ui-sref="stereos.show({ id: stereo.id})"> {{ stereo.name }}</a> -->
+</div>
+
+<!-- <div ng-repeat="stereo in ctrl.stereos | filter: ctrl.search ">
 
 <a ui-sref="home.show({id: stereo.id})"> {{stereo.name }}</a>
 
-</div>
+</div> -->

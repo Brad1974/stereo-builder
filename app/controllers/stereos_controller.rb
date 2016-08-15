@@ -12,6 +12,7 @@ class StereosController < ApplicationController
   end
 
   def create
+    binding.pry
     @stereo = Stereo.new(stereo_params)
     @stereo.save
     render json: @stereo, status: 201
