@@ -6,6 +6,7 @@ function ComponentsController(components, $filter) {
   ctrl.sortReverse = false;
 
 
+
 }
 
 angular
