@@ -5,13 +5,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Component</th>
+      <th>
+        <a class="fake-link" ng-click="ctrl.sortColumn = 'category'; ctrl.sortReverse = !ctrl.sortReverse">
+          Category
+          <span ng-show="ctrl.sortColumn == 'category' && !ctrl.sortReverse"></span>
+          <span ng-show="ctrl.sortColumn == 'category' && ctrl.sortReverse"></span>
+        </a>
+      </th>
       <th>Brand</th>
       <th>Name</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="comp in ctrl.components" component-display component="comp"></tr>
+    <tr ng-repeat="comp in ctrl.components | orderBy:ctrl.sortColumn:ctrl.sortReverse" component-display component="comp"></tr>
   </tbody>
 </table>

@@ -14,3 +14,7 @@
  *= require_self
  *= require 'bootstrap-sass'
  */
+ .fake-link {
+   color: #337ab7;
+   cursor: pointer;
+}

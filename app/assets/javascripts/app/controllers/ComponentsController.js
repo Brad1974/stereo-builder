@@ -1,7 +1,9 @@
-function ComponentsController(components) {
+function ComponentsController(components, $filter) {
 
   var ctrl = this
   ctrl.components = components.data
+  ctrl.sortColumn = 'name';
+  ctrl.sortReverse = false;
 
 
 }
