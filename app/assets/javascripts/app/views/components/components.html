@@ -2,6 +2,12 @@
   <h2>Components Index</h2>
 </div>
 
+
+<button ng-click="ctrl.withinRange()">price filter</button>
+<label>minimum price: </label><input integer ng-model="ctrl.min">
+<label>maximum price: </label><input integer ng-model="ctrl.max">
+<button ng-click="ctrl.reset()">reset</button>
+
 <table class="table">
   <thead>
     <tr>
