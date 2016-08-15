@@ -6,6 +6,11 @@ class StereosController < ApplicationController
     render json: @stereos
   end
 
+  def show
+    @stereo = Stereo.find(params[:id])
+    render json: @stereo
+  end
+
   def create
     @stereo = Stereo.new(stereo_params)
     @stereo.save

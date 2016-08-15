@@ -27,15 +27,23 @@ angular
       resolve: {
         components: function (DataService) {
           return DataService.getComponents();
+        },
+        stereo: function ($stateParams, DataService) {
+          return DataService.getStereo($stateParams.id);
         }
       }
     })
 
     .state('home.newStereo', {
-      url:'stereos/new',
+      url:'newstereo',
       templateUrl: 'app/views/stereos/stereo.html',
       controller: 'StereoController as ctrl',
       resolve: {
+        stereo: function ($stateParams, DataService) {
+          if ($stateParams.id){
+          return DataService.getStereo($stateParams.id);
+          }
+        },
         components: function (DataService) {
           return DataService.getComponents();
         }

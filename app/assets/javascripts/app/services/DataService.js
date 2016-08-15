@@ -1,5 +1,9 @@
 function DataService($http) {
 
+  this.getStereo = function(id) {
+    return $http.get('/stereos/' + id);
+  }
+
   this.getStereos = function() {
     return $http.get('/stereos.json');
   }
