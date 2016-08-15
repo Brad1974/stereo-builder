@@ -6,15 +6,18 @@
   <span ng-if="!selectedComponent">
       <label> brand: </label> <input ng-model="comp.brand"
                                      name="compBrand"
+                                     value="comp.brand"
                                      required >
 
       <label> name: </label>  <input ng-model="comp.name"
                                      name="compName"
+                                     value="comp.name"
                                      name-taken
                                      required >
 
       <label> price: </label> <input ng-model="comp.price"
                                      name="compPrice"
+                                     value="comp.price"
                                      integer
                                      only-numbers
                                      required >
@@ -37,6 +40,10 @@
   </span>
 
   <div style="color:red">
+
+    <div ng-messages="compForm.compBrad.$error" ng-if="compForm.compBrad.$touched || compForm.$$parentForm.$submitted">
+      <div ng-message="required">Component Brand required</div>
+    </div>
 
     <div ng-messages="compForm.compName.$error" ng-if="compForm.compName.$touched || compForm.$$parentForm.$submitted">
       <div ng-message="nameTaken">Name already in database</div>

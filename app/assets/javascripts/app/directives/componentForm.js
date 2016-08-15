@@ -19,7 +19,7 @@ function componentForm () {
         else {
           scope.comp.brand = ""
           scope.comp.name = ""
-          scope.comp.price = ""
+          scope.comp.price = undefined
           scope.comp.url = ""
           }
 	      scope.$apply();

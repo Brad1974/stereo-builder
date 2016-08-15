@@ -1,5 +1,14 @@
-<form name="profileForm" ng-submit="add()" novalidate>
+<form name="profileForm" ng-submit="profileForm.$valid && add()" novalidate>
+
   <h5>Stereo Profile Name: <input ng-model="stereo.name" name="stereoName" required ></h5>
+
+  <div style="color:red">
+    <div ng-messages="profileForm.stereoName.$error" ng-if="profileForm.stereoName.$touched || profileForm.$submitted">
+      <div ng-message="required">Profile Name required</div>
+    </div>
+  </div>
+
+
 
   <component-form comp="comp" ng-repeat="comp in stereo.component_attributes"></component-form>
 </br>
