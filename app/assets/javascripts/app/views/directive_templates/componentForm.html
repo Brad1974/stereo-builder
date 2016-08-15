@@ -9,20 +9,20 @@
       <label> price: </label><input ng-model="comp.price">
   </span>
 
-  <div ng-if="selectedComponent">
+  <span ng-if="selectedComponent">
     <table class="table">
       <thead>
         <tr>
-          <th>Component</th>
-          <th>Brand</th>
-          <th>Name</th>
-          <th>Price</th>
+          <th class="col-md-1">Component</th>
+          <th class="col-md-1">Brand</th>
+          <th class="col-md-1">Name</th>
+          <th class="col-md-1">Price</th>
         </tr>
       </thead>
       <tbody>
         <tr component-display component="selectedComponent"></tr>
       </tbody>
     </table>
-  </div>
+  </span>
 
 </form>
