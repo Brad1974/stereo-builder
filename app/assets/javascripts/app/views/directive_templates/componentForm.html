@@ -9,4 +9,8 @@
       <label> price: </label><input ng-model="comp.price">
   </span>
 
+  <div ng-if="selectedComponent">
+    <component-display component="selectedComponent"></component-display>
+  </div>
+
 </form>
