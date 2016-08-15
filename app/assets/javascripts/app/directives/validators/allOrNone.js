@@ -3,7 +3,7 @@ function allOrNone(DataService) {
       restrict: 'A',
       require: 'ngModel',
       link: function (scope, element, attrs, ngModel) {
-    
+
 
   		}
   	}
