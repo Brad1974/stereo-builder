@@ -57,7 +57,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
       DataService.deleteStereo(ctrl.stereo.id)
       .then(function(result){
         alert("stereo deleted");
-        $state.go('home.index');
+        $state.go('home.stereoindex');
       })
     }
 

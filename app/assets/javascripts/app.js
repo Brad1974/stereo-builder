@@ -10,7 +10,12 @@ angular
       url:'welcome',
       templateUrl: 'app/views/welcome.html'
     })
-    .state('home.index', {
+    .state('home.componentindex', {
+      url: 'components',
+      templateUrl: 'app/views/components/components.html',
+      controller: 'ComponentsController as ctrl',
+    })
+    .state('home.stereoindex', {
       url:'stereos',
       templateUrl: 'app/views/stereos/index.html',
       controller: 'StereosController as ctrl',

@@ -22,8 +22,6 @@ function componentForm () {
 	      scope.$apply();
       });
 
-      debugger;
-
     }
   };
 };
