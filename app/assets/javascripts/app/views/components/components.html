@@ -12,9 +12,27 @@
           <span ng-show="ctrl.sortColumn == 'category' && ctrl.sortReverse"></span>
         </a>
       </th>
-      <th>Brand</th>
-      <th>Name</th>
-      <th>Price</th>
+      <th>
+        <a class="fake-link" ng-click="ctrl.sortColumn = 'brand'; ctrl.sortReverse = !ctrl.sortReverse">
+          Brand
+          <span ng-show="ctrl.sortColumn == 'brand' && !ctrl.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="ctrl.sortColumn == 'brand' && ctrl.sortReverse" class="fa fa-caret-up"></span>
+        </a>
+      </th>
+      <th>
+        <a class="fake-link" ng-click="ctrl.sortColumn = 'name'; ctrl.sortReverse = !ctrl.sortReverse">
+          Name
+          <span ng-show="ctrl.sortColumn == 'name' && !ctrl.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="ctrl.sortColumn == 'name' && ctrl.sortReverse" class="fa fa-caret-up"></span>
+        </a>
+      </th>
+      <th>
+        <a class="fake-link" ng-click="ctrl.sortColumn = 'price'; ctrl.sortReverse = !ctrl.sortReverse">
+          Price
+          <span ng-show="ctrl.sortColumn == 'price' && !ctrl.sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="ctrl.sortColumn == 'price' && ctrl.sortReverse" class="fa fa-caret-up"></span>
+        </a>
+      </th>
     </tr>
   </thead>
   <tbody>
