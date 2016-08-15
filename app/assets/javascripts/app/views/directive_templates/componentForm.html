@@ -4,9 +4,16 @@
   <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in comp.list'><option value="">Select</option></select>
 
   <span ng-if="!selectedComponent">
-      <label> brand: </label><input ng-model="comp.brand">
-      <label> name: </label><input ng-model="comp.name">
-      <label> price: </label><input ng-model="comp.price" integer >
+      <label> brand: </label> <input ng-model="comp.brand">
+
+      <label> name: </label>  <input ng-model="comp.name"
+                                     name="compName"
+                                     required >
+
+      <label> price: </label> <input ng-model="comp.price"
+                                     name="compPrice"
+                                     integer
+                                     required >
   </span>
 
   <span ng-if="selectedComponent">
@@ -24,5 +31,19 @@
       </tbody>
     </table>
   </span>
+
+  <div style="color:red">
+
+    <div ng-messages="compForm.compName.$error" ng-if="compForm.compName.$touched || compForm.$$parentForm.$submitted">
+      <div ng-message="nameTaken">Name already in database</div>
+      <div ng-message="required">Component Name required</div>
+    </div>
+
+    <div ng-messages="compForm.compPrice.$error" ng-if="compForm.compPrice.$touched || compForm.$$parentForm.$submitted">
+      <div ng-message="onlyNumbers">Price must contain a numeric value</div>
+      <div ng-message="required">price required</div>
+    </div>
+
+  </div>
 
 </form>
