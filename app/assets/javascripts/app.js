@@ -14,6 +14,11 @@ angular
       url: 'components',
       templateUrl: 'app/views/components/components.html',
       controller: 'ComponentsController as ctrl',
+      resolve: {
+        components: function (DataService) {
+          return DataService.getComponents();
+        }
+      }
     })
     .state('home.stereoindex', {
       url:'stereos',

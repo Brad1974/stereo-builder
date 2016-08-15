@@ -1,7 +1,8 @@
-function ComponentsController() {
+function ComponentsController(components) {
 
   var ctrl = this
-  ctrl.dan = "Daniel"
+  ctrl.components = components.data
+
 
 }
 
