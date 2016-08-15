@@ -1,3 +1,17 @@
-<div ng-repeat="comp in ctrl.components">
-{{ comp.name }}
+<div class="page-header text-center">
+  <h2>Components Index</h2>
 </div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Brand</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="comp in ctrl.components" component-display component="comp"></tr>
+  </tbody>
+</table>
