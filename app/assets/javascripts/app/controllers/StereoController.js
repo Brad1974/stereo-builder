@@ -8,11 +8,10 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   ctrl.media_players = ctrl.components.filter(function(x) { return x.category === "media player" });
 
 
-  if ($stateParams.id) {
+  if ($stateParams.id)
 
-    ctrl.stereo = stereo.data;
-    debugger;
-  }
+    { ctrl.stereo = stereo.data;}
+
   else {
 
     ctrl.stereo = {
@@ -43,14 +42,12 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
         ]
     }
   };
-  debugger;
 
   ctrl.addStereo = function() {
     ctrl.stereo.component_attributes.forEach(function(x) {delete x.list});
     DataService.postStereo(ctrl.stereo)
     .then(function(result){
       ctrl.stereo.id = result.data.id
-      debugger;
       $state.go('home.show', { id: result.data.id });
       alert("stereo created!")
     });

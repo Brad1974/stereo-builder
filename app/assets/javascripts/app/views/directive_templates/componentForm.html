@@ -1,3 +1,12 @@
 <form name="compForm">
-  <p> {{ comp.category }} </p>
+  <h4> {{ comp.category }} </h4>
+
+  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in comp.list'><option value="">Select</option></select>
+
+  <span ng-if="!selectedComponent">
+      <label> brand: </label><input ng-model="comp.brand">
+      <label> name: </label><input ng-model="comp.name">
+      <label> price: </label><input ng-model="comp.price">
+  </span>
+
 </form>
