@@ -4,7 +4,9 @@
   <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in comp.list'><option value="">Select</option></select>
 
   <span ng-if="!selectedComponent">
-      <label> brand: </label> <input ng-model="comp.brand">
+      <label> brand: </label> <input ng-model="comp.brand"
+                                     name="compBrand"
+                                     required >
 
       <label> name: </label>  <input ng-model="comp.name"
                                      name="compName"
@@ -14,6 +16,7 @@
       <label> price: </label> <input ng-model="comp.price"
                                      name="compPrice"
                                      integer
+                                     only-numbers
                                      required >
   </span>
 
