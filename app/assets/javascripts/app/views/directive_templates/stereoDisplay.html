@@ -23,7 +23,7 @@
           <td></td>
           <td></td>
           <td>Total</td>
-          <td style="font-weight:bold"> {{ (receiver.price + speaker.price + media_player.price) / 100 | currency }}</td>
+          <td style="font-weight:bold"> {{ (stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price) / 100 | currency }}</td>
         </tr>
       </tbody>
     </table>
