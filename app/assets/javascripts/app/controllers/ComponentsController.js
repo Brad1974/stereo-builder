@@ -12,6 +12,8 @@ function ComponentsController($scope, components, $filter) {
 
   ctrl.reset = function(){
     ctrl.components= components.data
+    ctrl.min = ""
+    ctrl.max = ""
 
   }
 
