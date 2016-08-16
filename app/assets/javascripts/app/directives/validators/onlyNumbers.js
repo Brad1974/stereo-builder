@@ -4,7 +4,7 @@ function onlyNumbers() {
       require: 'ngModel',
       link: function (scope, element, attrs, ngModel) {
         ngModel.$validators.onlyNumbers = function (value) {
-          return (/^\-?\d+$/).test(value);
+          return (/^(\s*|\d+)$/).test(value);
   			};
   		}
   	}
