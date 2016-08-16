@@ -44,13 +44,21 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   };
 
   ctrl.addStereo = function() {
-    ctrl.stereo.component_attributes.forEach(function(x) {delete x.list});
-    DataService.postStereo(ctrl.stereo)
-    .then(function(result){
-      ctrl.stereo.id = result.data.id
-      $state.go('home.show', { id: result.data.id });
-      alert("stereo created!")
-    });
+
+    var filled = ctrl.stereo.component_attributes.filter(function(c){return c.name != ""}).length
+
+    if (filled === 0) { alert ("need to add at least one component") }
+
+    else {
+
+      ctrl.stereo.component_attributes.forEach(function(x) {delete x.list});
+      DataService.postStereo(ctrl.stereo)
+      .then(function(result){
+        ctrl.stereo.id = result.data.id
+        $state.go('home.show', { id: result.data.id });
+        alert("stereo created!")
+      });
+    }
   };
 
   ctrl.deleteStereo = function(){

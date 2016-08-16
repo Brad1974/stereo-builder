@@ -3,19 +3,18 @@
   <label> brand: </label> <input ng-model="comp.brand"
                                  name="compBrand"
                                  value="comp.brand"
-                                 required >
+                                 ng-required="comp.name.length > 0 || comp.price.length > 0">
 
-  <label> name: </label>  <input ng-model="comp.name"
+  <label> model: </label>  <input ng-model="comp.name"
                                  name="compName"
                                  value="comp.name"
                                  name-taken
-                                 all-or-none
-                                 required >
+                                 ng-required="comp.brand.length > 0 || comp.price.length > 0">
 
   <label> price: </label> <input ng-model="comp.price"
                                  name="compPrice"
                                  value="comp.price"
                                  integer
                                  only-numbers
-                                 required >
+                                 ng-required="comp.name.length > 0 || comp.brand.length > 0">
 </span>

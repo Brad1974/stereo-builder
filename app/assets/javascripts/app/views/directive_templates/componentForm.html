@@ -44,17 +44,17 @@
   <div style="color:red">
 
     <div ng-messages="compForm.compBrand.$error" ng-if="compForm.compBrand.$touched || compForm.$$parentForm.$submitted">
-      <div ng-message="required">Component Brand required</div>
+      <div ng-message="required">{{ comp.category}} brand required</div>
     </div>
 
     <div ng-messages="compForm.compName.$error" ng-if="compForm.compName.$touched || compForm.$$parentForm.$submitted">
       <div ng-message="nameTaken">Name already in database</div>
-      <div ng-message="required">Component Name required</div>
+      <div ng-message="required">{{ comp.category }} model required</div>
     </div>
 
     <div ng-messages="compForm.compPrice.$error" ng-if="compForm.compPrice.$touched || compForm.$$parentForm.$submitted">
       <div ng-message="onlyNumbers">Price must contain a numeric value</div>
-      <div ng-message="required">price required</div>
+      <div ng-message="required"> {{ comp.category }} price required</div>
     </div>
 
   </div>
