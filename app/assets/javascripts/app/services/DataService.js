@@ -12,6 +12,11 @@ function DataService($http) {
     return $http.post('/stereos', { stereo: newProfile } )
   }
 
+  this.updateStereo = function(newProfile, id) {
+  return $http.patch('/stereos/' + id, newProfile )
+}
+
+
   this.getComponents = function() {
     return $http.get('/components.json');
   }

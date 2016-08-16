@@ -52,12 +52,28 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     else {
 
       ctrl.stereo.component_attributes.forEach(function(x) {delete x.list});
-      DataService.postStereo(ctrl.stereo)
-      .then(function(result){
-        ctrl.stereo.id = result.data.id
-        $state.go('home.show', { id: result.data.id });
-        alert("stereo created!")
-      });
+
+      if (!ctrl.stereo.id)
+
+      {
+
+        DataService.postStereo(ctrl.stereo)
+        .then(function(result){
+          ctrl.stereo.id = result.data.id
+          $state.go('home.show', { id: result.data.id });
+          alert("stereo created!")
+        });
+      }
+
+      else {
+
+        DataService.updateStereo(ctrl.stereo, ctrl.stereo.id)
+        .then(function(result){
+          $state.go('home.show', {id: result.data.id });
+          alert("stereo updated")
+        });
+
+      }
     }
   };
 
@@ -68,6 +84,8 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
         $state.go('home.stereoindex');
       })
     }
+
+  debugger;
 
 };
 
