@@ -2,7 +2,7 @@
 
   <h5>Stereo Profile Name: <input ng-model="stereo.name" name="stereoName" required>
 
-  <input ng-model="stereo.hidden" name="stereoHidden" type="hidden" ng-required="daniel()">
+  <input ng-model="stereo.hidden" name="stereoHidden" type="hidden" ng-required="atLeastOne()">
 
   <div style="color:red">
     <div ng-messages="profileForm.stereoName.$error" ng-if="profileForm.stereoName.$touched || profileForm.$submitted">

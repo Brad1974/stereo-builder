@@ -4,7 +4,7 @@ function stereoForm () {
     replace: true,
     templateUrl: 'app/views/directive_templates/stereoForm.html',
     controller: function($scope) {
-      $scope.daniel = function(){
+      $scope.atLeastOne = function(){
         if ( $scope.stereo.component_attributes.filter(function(c){return c.name != ""}).length > 0  )
           { return false }
         else
