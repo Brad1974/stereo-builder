@@ -1,10 +1,18 @@
 <form name="profileForm" ng-submit="profileForm.$valid && add()" novalidate>
 
-  <h5>Stereo Profile Name: <input ng-model="stereo.name" name="stereoName" required ></h5>
+  <h5>Stereo Profile Name: <input ng-model="stereo.name" name="stereoName" required>
+
+  <input ng-model="stereo.hidden" name="stereoHidden" type="hidden" ng-required="daniel()">
 
   <div style="color:red">
     <div ng-messages="profileForm.stereoName.$error" ng-if="profileForm.stereoName.$touched || profileForm.$submitted">
       <div ng-message="required">Profile Name required</div>
+    </div>
+  </div>
+
+  <div style="color:red">
+    <div ng-messages="profileForm.stereoHidden.$error" ng-if="profileForm.stereoHidden.$touched || profileForm.$submitted">
+      <div ng-message="required">You need to add at least one component to your stereo</div>
     </div>
   </div>
 
