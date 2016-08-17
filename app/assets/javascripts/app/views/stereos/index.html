@@ -9,9 +9,9 @@
   <div class="list-group-item-text">
 
     <h4>Name: {{ stereo.name }}</h4>
-    <p ng-show="stereo.component_attributes[0].name">Receiver: {{ stereo.component_attributes[0].brand }} {{ stereo.component_attributes[0].name }} </p>
-    <p ng-show="stereo.component_attributes[1].name">Speakers: {{ stereo.component_attributes[1].name }} </p>
-    <p ng-show="stereo.component_attributes[2].name">Media Player {{ stereo.component_attributes[2].name }}</p>
+    <p ng-show="stereo.component_attributes[0].name">{{ stereo.component_attributes[0].category }}: {{ stereo.component_attributes[0].brand }} {{ stereo.component_attributes[0].name }} </p>
+    <p ng-show="stereo.component_attributes[1].name">{{ stereo.component_attributes[1].category }}: {{ stereo.component_attributes[1].name }} </p>
+    <p ng-show="stereo.component_attributes[2].name">{{ stereo.component_attributes[2].category }}: {{ stereo.component_attributes[2].name }}</p>
     <h4> Total Cost: {{ stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price | toDollar}} </h4>
   </div>
 </a>
