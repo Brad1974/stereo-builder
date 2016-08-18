@@ -6,8 +6,8 @@
       <h4>Name: {{ ctrl.stereo.name }}</h4>
 
       <p ng-show="ctrl.receiver.name" >{{ ctrl.receiver.category }}: {{ ctrl.receiver.brand }} {{ ctrl.receiver.name }} </p>
-      <p ng-show="ctrl.speaker.name">{{ ctrl.speaker.category }}: {{ ctrl.speaker.name }} </p>
-      <p ng-show="ctrl.media_player.name">{{ ctrl.media_player.category }}: {{ ctrl.media_player.name }}</p>
+      <p ng-show="ctrl.speaker.name">{{ ctrl.speaker.category }}: {{ ctrl.speaker.brand }} {{ ctrl.speaker.name }} </p>
+      <p ng-show="ctrl.media_player.name">{{ ctrl.media_player.category }}: {{ ctrl.media_player.brand }} {{ ctrl.media_player.name }}</p>
       <h5> Total Cost: {{ ctrl.receiver.price + ctrl.speaker.price + ctrl.media_player.price | toDollar}} </h5>
     </div>
   </a>

@@ -25,7 +25,7 @@ Specs:
 
   I utilize lots of $http functions inside a DataService service that gets called on by various controllers/directives as well as by various resolve properties in my app.js file.
 
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
