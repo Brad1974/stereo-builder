@@ -49,13 +49,13 @@ angular
       templateUrl: 'app/views/stereos/stereo.html',
       controller: 'StereoController as ctrl',
       resolve: {
+        components: function (DataService) {
+          return DataService.getComponents();
+        },
         stereo: function ($stateParams, DataService) {
           if ($stateParams.id){
           return DataService.getStereo($stateParams.id);
           }
-        },
-        components: function (DataService) {
-          return DataService.getComponents();
         }
       }
     })

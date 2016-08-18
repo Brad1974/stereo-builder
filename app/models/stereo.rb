@@ -45,19 +45,10 @@ class Stereo < ApplicationRecord
         s.update(component_id: compvalues[:id])
         self.save
       else
-
         self.components << compvalues
         self.save
       end
     end
   end
-
-  # if stereo has compentry
-  #     then were good! no more needed
-  # else
-  #     if stereo has a comp with the same category
-  #       then update that stereo_component with compentry.id
-  #     else
-  #       push compentry onto stereo's components
 
 end

@@ -11,9 +11,6 @@ function stereosIndexDisplay () {
       ctrl.speaker = ctrl.stereo.component_attributes.filter(function(x){return x.category == "speaker"})[0];
       ctrl.media_player = ctrl.stereo.component_attributes.filter(function(x){return x.category == "media_player"})[0];
 
-
-
-
     }
   }
 }

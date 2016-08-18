@@ -38,24 +38,19 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
 
   if ($stateParams.id)
-
-
         {
-          // debugger;
-          ctrl.stereo.name = stereo.data.name
-          ctrl.stereo.id = stereo.data.id
-          ctrl.stereo.component_attributes.forEach(function(c){
-              if (stereo.data.component_attributes.filter(function(x){return x.category == c.category}).length > 0)
+            ctrl.stereo.name = stereo.data.name
+            ctrl.stereo.id = stereo.data.id
+            ctrl.stereo.component_attributes.forEach(function(c){
+                if (stereo.data.component_attributes.filter(function(x){return x.category == c.category}).length > 0)
 
-              {   c.brand = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].brand;
-                  c.name = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].name;
-                  c.price = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].price;
-                  c.id = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].id;
-              }
-          });
+                {   c.brand = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].brand;
+                    c.name = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].name;
+                    c.price = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].price;
+                    c.id = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].id;
+                }
+            });
         }
-        // else { debugger; }
-
 
   ctrl.addStereo = function() {
 
@@ -64,14 +59,12 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
       if (!ctrl.stereo.id)
 
         {
-
             DataService.postStereo(ctrl.stereo)
             .then(function(result){
               ctrl.stereo.id = result.data.id
               $state.go('home.show', { id: result.data.id });
               alert("stereo created!")
             });
-
         }
 
       else
@@ -80,10 +73,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
             DataService.updateStereo(ctrl.stereo, ctrl.stereo.id)
             .then(function(result){
-              debugger;
-              // $state.go('home.show', {id: result.data.id });
-              $state.go('home.stereoindex');
-              // debugger;
+              $state.go('home.stereoindex');s
               alert("stereo updated")
             });
 
@@ -91,12 +81,12 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   }
 
   ctrl.deleteStereo = function(){
-      DataService.deleteStereo(ctrl.stereo.id)
-      .then(function(result){
-        alert("stereo deleted");
-        $state.go('home.stereoindex');
-      })
-    }
+    DataService.deleteStereo(ctrl.stereo.id)
+    .then(function(result){
+      alert("stereo deleted");
+      $state.go('home.stereoindex');
+    })
+  }
 
 };
 

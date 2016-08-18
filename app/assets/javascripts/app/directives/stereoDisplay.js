@@ -12,7 +12,6 @@ function stereoDisplay () {
       $scope.total = function(){
         return (a+b+c)
       }
-      // debugger;
     }
   }
 }
