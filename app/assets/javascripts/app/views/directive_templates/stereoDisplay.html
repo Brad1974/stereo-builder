@@ -12,18 +12,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-show="stereo.component_attributes[0].name"component-display component="stereo.component_attributes[0]">
+        <tr component-display component="stereo.component_attributes[0]">
         </tr>
-        <tr ng-show="stereo.component_attributes[1].name" component-display component="stereo.component_attributes[1]">
+        <tr  component-display component="stereo.component_attributes[1]">
         </tr>
-        <tr ng-show="stereo.component_attributes[2].name"component-display component="stereo.component_attributes[2]">
+        <tr component-display component="stereo.component_attributes[2]">
         </tr>
 
         <tr>
           <td></td>
           <td></td>
           <td>Total</td>
-          <td style="font-weight:bold"> {{ (stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price) / 100 | currency }}</td>
+          <td ng-show="!stereo.id" style="font-weight:bold"> {{ (stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price) / 100 | currency }}</td>
+          <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td>
+
         </tr>
       </tbody>
     </table>

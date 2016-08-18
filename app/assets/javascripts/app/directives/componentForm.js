@@ -12,6 +12,7 @@ function componentForm () {
           scope.comp.name = scope.selectedComponent.name
           scope.comp.price = scope.selectedComponent.price
           scope.comp.url = scope.selectedComponent.url
+          scope.comp.id = scope.selectedComponent.id
           }
         else {
           scope.comp.brand = ""

@@ -20,19 +20,24 @@ class StereosController < ApplicationController
   def update
     @stereo = Stereo.find(params[:id])
     @stereo.update(name: params[:name])
-    params[:component_attributes].each_with_index do |k,i|
-      binding.pry;
-      if k[:name] === @stereo.components[i][:name]
-        @stereo.components[i].update(price: k[:price])
-        binding.pry
+    params[:component_attributes].each do |k|
+      binding.pry
+      if k[:name] == ""
+        (@stereo.stereo_components.find{|sc| sc.component_id == k[:id]}).destroy
       else
-        binding.pry
-        if k[:name].length > 0
-          binding.pry
+        if k[:id]
+          component = Component.find(k[:id])
+          component.update(price: k[:price])
+          if @stereo.stereo_components.find{|sc| sc.component.category == k[:category]}
+            @stereo.stereo_components.find{|sc| sc.component.category == k[:category]}.update(component_id: k[:id])
+          else
+            @stereo.components << component
+            @stereo.save
+          end
+        else
+          (@stereo.stereo_components.find{|sc| sc.component.category == k[:category]}).destroy
           @stereo.components.create(name: k[:name], brand: k[:brand], price: k[:price], category: k[:category])
         end
-        binding.pry
-        @stereo.components[i].stereo_components.find_by_stereo_id(@stereo.id).destroy
       end
     end
     render json: @stereo, status: 201
@@ -45,7 +50,7 @@ class StereosController < ApplicationController
   private
 
   def stereo_params
-    params.require(:stereo).permit(:name, component_attributes: [:name, :price, :category, :brand, :id])
+    params.require(:stereo).permit(:name, component_attributes: [:name, :price, :category, :brand])
   end
 
 
