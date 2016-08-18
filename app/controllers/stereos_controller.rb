@@ -20,25 +20,8 @@ class StereosController < ApplicationController
   def update
     @stereo = Stereo.find(params[:id])
     @stereo.update(name: params[:name])
-    params[:component_attributes].each do |k|
-      binding.pry
-      if k[:name] == ""
-        (@stereo.stereo_components.find{|sc| sc.component_id == k[:id]}).destroy
-      else
-        if k[:id]
-          component = Component.find(k[:id])
-          component.update(price: k[:price])
-          if @stereo.stereo_components.find{|sc| sc.component.category == k[:category]}
-            @stereo.stereo_components.find{|sc| sc.component.category == k[:category]}.update(component_id: k[:id])
-          else
-            @stereo.components << component
-            @stereo.save
-          end
-        else
-          (@stereo.stereo_components.find{|sc| sc.component.category == k[:category]}).destroy
-          @stereo.components.create(name: k[:name], brand: k[:brand], price: k[:price], category: k[:category])
-        end
-      end
+    params[:component_attributes].each do |c|
+      @stereo.handle_entry(c)
     end
     render json: @stereo, status: 201
   end

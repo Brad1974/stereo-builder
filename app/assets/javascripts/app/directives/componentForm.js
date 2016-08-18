@@ -19,6 +19,7 @@ function componentForm () {
           scope.comp.name = ""
           scope.comp.price = ""
           scope.comp.url = ""
+          scope.comp.id = ""
         }
 	      scope.$apply();
       });

@@ -83,7 +83,9 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
         DataService.updateStereo(ctrl.stereo, ctrl.stereo.id)
         .then(function(result){
-          $state.go('home.show', {id: result.data.id });
+          // $state.go('home.show', {id: result.data.id });
+          $state.go('home.stereoindex');
+          debugger;
           alert("stereo updated")
         });
 
