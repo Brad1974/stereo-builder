@@ -36,5 +36,4 @@ class StereosController < ApplicationController
     params.require(:stereo).permit(:name, component_attributes: [:name, :price, :category, :brand])
   end
 
-
 end

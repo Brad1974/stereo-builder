@@ -2,5 +2,5 @@ Component.create(brand: "Onkyo", name: "Blah Blah", price: 60000, category: "rec
 Component.create(brand: "Marantz", name: "Flagship", price: 90000, category: "receiver")
 Component.create(brand: "Odyssey Audio", name: "Lorelei", price: 200000, category: "speaker")
 Component.create(brand: "NHT", name: "Classic Series", price: 200000, category: "speaker")
-Component.create(brand: "Squeezebox", name: "SB3", price: 15000, category: "media player")
-Component.create(brand: "Sonos", name: "system", price: 100000, category: "media player")
+Component.create(brand: "Squeezebox", name: "SB3", price: 15000, category: "media_player")
+Component.create(brand: "Sonos", name: "system", price: 100000, category: "media_player")

@@ -5,7 +5,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   ctrl.components = components.data
   ctrl.receivers = ctrl.components.filter(function(x) { return x.category === "receiver" });
   ctrl.speakers = ctrl.components.filter(function(x) { return x.category === "speaker" });
-  ctrl.media_players = ctrl.components.filter(function(x) { return x.category === "media player" });
+  ctrl.media_players = ctrl.components.filter(function(x) { return x.category === "media_player" });
 
 
   ctrl.stereo = {
@@ -30,7 +30,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
                brand: "",
                name: "",
                price: "",
-               category: "media player",
+               category: "media_player",
                list: ctrl.media_players
              }
          ]
@@ -85,7 +85,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
         .then(function(result){
           // $state.go('home.show', {id: result.data.id });
           $state.go('home.stereoindex');
-          debugger;
+          // debugger;
           alert("stereo updated")
         });
 
