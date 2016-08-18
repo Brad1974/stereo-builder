@@ -1,6 +1,7 @@
 <div class="page-header text-center">
   <h4 ng-show="!ctrl.stereo.id"> Create New Stereo Profile </h4>
-  <h4 ng-show="ctrl.stereo.id"> Stereo Profile </h4>
+  <h4 ng-show="ctrl.stereo.id && !show"> Stereo Profile </h4>
+  <h4 ng-show="ctrl.stereo.id && show">Edit Your Stereo</h4>
 </div>
 
 <stereo-display stereo="ctrl.stereo"></stereo-display>

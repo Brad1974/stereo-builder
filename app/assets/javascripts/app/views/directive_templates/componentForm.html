@@ -4,25 +4,24 @@
   <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in comp.list'><option value="">Select</option></select>
 
   <span ng-if="!selectedComponent">
-      <manual-entry comp="comp"></manual-entry>
-      <!-- <label> brand: </label> <input ng-model="comp.brand"
+
+      <label> brand: </label> <input ng-model="comp.brand"
                                      name="compBrand"
                                      value="comp.brand"
-                                     required >
+                                     ng-required="comp.name.length > 0 || comp.price.length > 0">
 
-      <label> name: </label>  <input ng-model="comp.name"
+      <label> model: </label>  <input ng-model="comp.name"
                                      name="compName"
                                      value="comp.name"
                                      name-taken
-                                     all-or-none
-                                     required >
+                                     ng-required="comp.brand.length > 0 || comp.price.length > 0">
 
       <label> price: </label> <input ng-model="comp.price"
                                      name="compPrice"
                                      value="comp.price"
                                      integer
                                      only-numbers
-                                     required > -->
+                                     ng-required="comp.name.length > 0 || comp.brand.length > 0">
   </span>
 
   <span ng-if="selectedComponent">
@@ -43,17 +42,17 @@
 
   <div style="color:red">
 
-    <div ng-messages="compForm.compBrand.$error" ng-if="compForm.compBrand.$touched || compForm.$$parentForm.$submitted">
+    <div ng-messages="compForm.compBrand.$error">
       <div ng-message="required">{{ comp.category}} brand required</div>
     </div>
 
-    <div ng-messages="compForm.compName.$error" ng-if="compForm.compName.$touched || compForm.$$parentForm.$submitted">
-      <div ng-message="nameTaken">Name already in database</div>
+    <div ng-messages="compForm.compName.$error" >
+      <div ng-message="nameTaken">{{ comp.categoryn}} model already in database</div>
       <div ng-message="required">{{ comp.category }} model required</div>
     </div>
 
-    <div ng-messages="compForm.compPrice.$error" ng-if="compForm.compPrice.$touched || compForm.$$parentForm.$submitted">
-      <div ng-message="onlyNumbers">Price must contain a numeric value</div>
+    <div ng-messages="compForm.compPrice.$error" >
+      <div ng-message="onlyNumbers">Price must contain a valid numeric value</div>
       <div ng-message="required"> {{ comp.category }} price required</div>
     </div>
 
