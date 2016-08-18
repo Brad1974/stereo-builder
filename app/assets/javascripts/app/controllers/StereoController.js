@@ -59,39 +59,36 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
   ctrl.addStereo = function() {
 
-    var filled = ctrl.stereo.component_attributes.filter(function(c){return c.name != ""}).length
-
-    if (filled === 0) { alert ("need to add at least one component") }
-
-    else {
-
       ctrl.stereo.component_attributes.forEach(function(x) {delete x.list});
 
       if (!ctrl.stereo.id)
 
-      {
+        {
 
-        DataService.postStereo(ctrl.stereo)
-        .then(function(result){
-          ctrl.stereo.id = result.data.id
-          $state.go('home.show', { id: result.data.id });
-          alert("stereo created!")
-        });
-      }
+            DataService.postStereo(ctrl.stereo)
+            .then(function(result){
+              ctrl.stereo.id = result.data.id
+              $state.go('home.show', { id: result.data.id });
+              alert("stereo created!")
+            });
 
-      else {
+        }
 
-        DataService.updateStereo(ctrl.stereo, ctrl.stereo.id)
-        .then(function(result){
-          // $state.go('home.show', {id: result.data.id });
-          $state.go('home.stereoindex');
-          // debugger;
-          alert("stereo updated")
-        });
+      else
 
-      }
-    }
-  };
+        {
+
+            DataService.updateStereo(ctrl.stereo, ctrl.stereo.id)
+            .then(function(result){
+              debugger;
+              // $state.go('home.show', {id: result.data.id });
+              $state.go('home.stereoindex');
+              // debugger;
+              alert("stereo updated")
+            });
+
+        };
+  }
 
   ctrl.deleteStereo = function(){
       DataService.deleteStereo(ctrl.stereo.id)

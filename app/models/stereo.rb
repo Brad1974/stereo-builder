@@ -32,8 +32,9 @@ class Stereo < ApplicationRecord
   end
 
   def kill_association(compvalues)
-    binding.pry
-    self.stereo_components.find{|sc| sc.component.category == compvalues[:category]}.destroy
+    if s = self.stereo_components.find{|sc| sc.component.category == compvalues[:category] }
+      s.destroy
+    end
     self.save
   end
 
