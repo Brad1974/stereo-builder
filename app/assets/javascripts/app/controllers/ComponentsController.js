@@ -6,6 +6,7 @@ function ComponentsController($scope, components, $filter) {
   ctrl.sortColumn = 'name';
   ctrl.sortReverse = false;
 
+
   ctrl.withinRange = function(){
     ctrl.components = components.data.filter(function(x){ if (ctrl.min <= x.price == x.price <= ctrl.max){ return x }})
   }
