@@ -4,7 +4,7 @@ class Stereo < ApplicationRecord
 
   def component_attributes=(attributes)
     attributes.each do |component_hash|
-      if !component_hash[:name].empty?
+      if component_hash[:price] != ""
         if Component.find_by_name(component_hash[:name])
           c = Component.find_by_name(component_hash[:name])
           self.stereo_components.build(component_id: c.id)

@@ -27,6 +27,7 @@ function StereoController($state, $stateParams, $filter, components, DataService
   ctrl.addStereo = function() {
     DataService.postStereo(ctrl.stereo)
     .then(function(result){
+      debugger;
       $state.go('home.show', { id: result.data.id });
       alert("stereo created!")
     });
