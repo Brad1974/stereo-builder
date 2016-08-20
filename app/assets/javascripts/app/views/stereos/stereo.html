@@ -6,7 +6,7 @@
 
 <stereo-display stereo="ctrl.stereo"></stereo-display>
 
-<form name="profileForm" ng-submit="profileForm.$valid && ctrl.addStereo()" novalidate>
+<form ng-if="!ctrl.stereo.id" name="profileForm" ng-submit="profileForm.$valid && ctrl.addStereo()" novalidate>
 
     <h5>Stereo Profile Name: <input ng-model="ctrl.stereo.name" name="stereoName" required name-taken>
 

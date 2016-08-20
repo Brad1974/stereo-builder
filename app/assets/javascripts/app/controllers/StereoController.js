@@ -1,4 +1,4 @@
-function StereoController($state, $stateParams, $filter, components, DataService) {
+function StereoController($state, $stateParams, $filter, components, stereo, DataService) {
 
   var ctrl = this
 
@@ -10,12 +10,18 @@ function StereoController($state, $stateParams, $filter, components, DataService
 
   ctrl.list = [ receiver, speaker, media_player ]
 
-  ctrl.stereo = { component_attributes:
-                  [ {price: "", category: "receiver"},
-                    {price: "", category: "speaker"},
-                    {price: "", category: "media_player"}
-                  ]
-                }
+  loadStereo()
+
+  function loadStereo() {
+    if (stereo == "") { ctrl.stereo = { component_attributes:
+                        [ {price: "", category: "receiver"},
+                          {price: "", category: "speaker"},
+                          {price: "", category: "media_player"}
+                        ]
+                      }
+                    }
+    else ctrl.stereo = stereo.data
+  }
 
   ctrl.atLeastOne = function(){
     if ( ctrl.stereo.component_attributes.filter(function(c){return c.name != ""}).length > 0 )
@@ -32,6 +38,8 @@ function StereoController($state, $stateParams, $filter, components, DataService
       alert("stereo created!")
     });
   }
+
+  debugger;
 
 };
 
