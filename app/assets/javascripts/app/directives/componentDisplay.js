@@ -1,6 +1,6 @@
 function componentDisplay () {
   return {
-    scope: {component: "="},
+    scope: {crow: "="},
     link: function (scope, element, attrs, ctrl) {
       var row = element[0]
       if (row.getAttribute("name") == "index-row") {

@@ -39,8 +39,6 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     });
   }
 
-  debugger;
-
 };
 
 angular

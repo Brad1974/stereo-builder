@@ -5,13 +5,10 @@ function stereoDisplay () {
     templateUrl: 'app/views/directive_templates/stereoDisplay.html',
     controller: function($scope) {
 
-      var a = parseInt($scope.stereo.component_attributes[0].price) || 0
-      var b = parseInt($scope.stereo.component_attributes[1].price) || 0
-      var c = parseInt($scope.stereo.component_attributes[2].price) || 0
+      $scope.receiver = $scope.stereo.component_attributes.filter(function(x){return x.category == "receiver"})[0] || "";
+      $scope.speaker = $scope.stereo.component_attributes.filter(function(x){return x.category == "speaker"})[0] || "";
+      $scope.media_player = $scope.stereo.component_attributes.filter(function(x){return x.category == "media_player"})[0] || "";
 
-      $scope.total = function(){
-        return (a+b+c)
-      }
     }
   }
 }

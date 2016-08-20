@@ -12,19 +12,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr component-display component="stereo.component_attributes[0]">
+        <tr ng-if='receiver != ""' component-display crow="receiver">
         </tr>
-        <tr  component-display component="stereo.component_attributes[1]">
+        <tr ng-if='speaker != ""' component-display crow="speaker">
         </tr>
-        <tr component-display component="stereo.component_attributes[2]">
+        <tr ng-if='media_player != ""' component-display crow="media_player">
         </tr>
 
         <tr>
           <td></td>
           <td></td>
           <td>Total</td>
-          <td ng-show="!stereo.id" style="font-weight:bold"> {{ (stereo.component_attributes[0].price + stereo.component_attributes[1].price + stereo.component_attributes[2].price) / 100 | currency }}</td>
-          <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td>
+          <td style="font-weight:bold"> {{ receiver.price + speaker.price + media_player.price | toDollar  }}</td>
+          <!-- <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td> -->
 
         </tr>
       </tbody>
