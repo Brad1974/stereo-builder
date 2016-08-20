@@ -24,7 +24,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   }
 
   ctrl.atLeastOne = function(){
-    if ( ctrl.stereo.component_attributes.filter(function(c){return c.name != ""}).length > 0 )
+    if ( ctrl.stereo.component_attributes.filter(function(c){return c.price != ""}).length > 0 )
     { return false }
     else
     { return true  }
