@@ -10,18 +10,14 @@ class Stereo < ApplicationRecord
           self.stereo_components.build(component_id: c.id)
           self.save
         else
-          binding.pry
           self.components.build(component_hash)
-          binding.pry
           self.save
-          binding.pry
         end
       end
     end
   end
 
   def handle_entry(compvalues)
-    binding.pry
     if compvalues[:name] == ""
       self.kill_association(compvalues)
     else

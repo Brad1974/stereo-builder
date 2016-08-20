@@ -30,6 +30,10 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     { return true  }
   }
 
+  ctrl.submit = function(){
+    ctrl.stereo.id? ctrl.updateStereo() : ctrl.addStereo()
+  }
+
   ctrl.addStereo = function() {
     DataService.postStereo(ctrl.stereo)
     .then(function(result){
@@ -41,7 +45,8 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   ctrl.updateStereo = function() {
     DataService.updateStereo(ctrl.stereo)
     .then(function(result){
-      debugger;
+      $state.go($state.$current, null, { reload: true });
+      alert("stereo created!")
     })
   }
 
