@@ -12,8 +12,8 @@ function DataService($http) {
     return $http.post('/stereos', { stereo: newProfile } )
   }
 
-  this.updateStereo = function(newProfile, id) {
-    return $http.patch('/stereos/' + id, newProfile )
+  this.updateStereo = function(stereo) {
+    return $http.patch('/stereos/' + stereo.id, stereo )
   }
 
   this.getComponents = function() {
@@ -23,7 +23,7 @@ function DataService($http) {
   this.deleteStereo = function(id) {
     return $http.delete('/stereos/' + id);
   }
-  
+
 }
 
 angular

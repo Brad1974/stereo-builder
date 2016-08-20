@@ -18,6 +18,7 @@ class StereosController < ApplicationController
   end
 
   def update
+    binding.pry
     @stereo = Stereo.find(params[:id])
     @stereo.update(name: params[:name])
     params[:component_attributes].each do |c|

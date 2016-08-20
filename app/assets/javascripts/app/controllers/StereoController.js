@@ -33,10 +33,24 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
   ctrl.addStereo = function() {
     DataService.postStereo(ctrl.stereo)
     .then(function(result){
-      debugger;
       $state.go('home.show', { id: result.data.id });
       alert("stereo created!")
     });
+  }
+
+  ctrl.updateStereo = function() {
+    DataService.updateStereo(ctrl.stereo)
+    .then(function(result){
+      debugger;
+    })
+  }
+
+  ctrl.deleteStereo = function(){
+    DataService.deleteStereo(ctrl.stereo.id)
+    .then(function(result){
+      alert("stereo deleted");
+      $state.go('home.stereoindex');
+    })
   }
 
 };

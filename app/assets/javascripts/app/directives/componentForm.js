@@ -5,10 +5,13 @@ function componentForm () {
     templateUrl: 'app/views/directive_templates/componentForm.html',
     controllerAs: 'cp',
     controller: function($scope){
-      $scope.menu = $scope.list.filter(function(x){return x[0].category == $scope.comp.category})[0]
+      if ($scope.list.filter(function(x){return x.length > 0}).length > 0)
+      { $scope.menu = $scope.list.filter(function(x){return x[0].category == $scope.comp.category})[0] }
     },
     link: function (scope, element, attrs) {
-
+      if (scope.list.filter(function(x){return x.length > 0}).length == 0)
+      { element[0].querySelector('select').remove() }
+      else {
       var sel = element[0].querySelector('select');
       sel.addEventListener('change', function () {
         if (scope.selectedComponent) {
@@ -26,6 +29,7 @@ function componentForm () {
         }
 	      scope.$apply();
       });
+    }
 
     }
   };
