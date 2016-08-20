@@ -2,5 +2,5 @@ Component.create(brand: "Onkyo", name: "TXNR809", price: 60000, category: "recei
 Component.create(brand: "Marantz", name: "SR7008", price: 90000, category: "receiver")
 Component.create(brand: "Odyssey Audio", name: "Lorelei", price: 200000, category: "speaker")
 Component.create(brand: "NHT", name: "Classic Series", price: 100000, category: "speaker")
-Component.create(brand: "Cambridge", name: "Azur 651C", price: 70000, category: "media_player")
-Component.create(brand: "Apple", name: "iPhone", price: 60000, category: "media_player")
+Component.create(brand: "Music Hall", name: "MMF-7.3", price: 160000, category: "turntable")
+Component.create(brand: "Rega", name: "P3", price: 110000, category: "turntable")

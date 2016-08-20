@@ -7,8 +7,8 @@
 
       <p ng-show="receiver.name" >{{ receiver.category }}: {{ receiver.brand }} {{ receiver.name }} </p>
       <p ng-show="speaker.name">{{ speaker.category }}: {{ speaker.brand }} {{ speaker.name }} </p>
-      <p ng-show="media_player.name">{{ media_player.category }}: {{ media_player.brand }} {{ media_player.name }}</p>
-      <h5> Total Cost: {{ receiver.price + speaker.price + media_player.price | toDollar}} </h5>
+      <p ng-show="turntable.name">{{ turntable.category }}: {{ turntable.brand }} {{ turntable.name }}</p>
+      <h5> Total Cost: {{ receiver.price + speaker.price + turntable.price | toDollar}} </h5>
     </div>
   </a>
 

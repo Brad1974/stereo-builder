@@ -4,7 +4,7 @@
 
 # Description
 
-Angular Stereo Builder is a basic Rails and Angular based web app that allows a user to assemble a stereo profile from an existing library of components or components that they create themselves.
+Angular Stereo Builder is a very basic Rails and Angular based web app that allows a user to assemble a stereo profile from an existing library of components or components that they create themselves.
 
 
 # Installation

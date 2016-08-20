@@ -6,9 +6,9 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
   var receiver = ctrl.components.filter(function(x) { return x.category === "receiver" });
   var speaker = ctrl.components.filter(function(x) { return x.category === "speaker" });
-  var media_player = ctrl.components.filter(function(x) { return x.category === "media_player" });
+  var turntable = ctrl.components.filter(function(x) { return x.category === "turntable" });
 
-  ctrl.list = [ receiver, speaker, media_player ]
+  ctrl.list = [ receiver, speaker, turntable ]
 
   loadStereo()
 
@@ -16,7 +16,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     if (stereo == "") { ctrl.stereo = { component_attributes:
                         [ {price: "", category: "receiver"},
                           {price: "", category: "speaker"},
-                          {price: "", category: "media_player"}
+                          {price: "", category: "turntable"}
                         ]
                       }
                     }

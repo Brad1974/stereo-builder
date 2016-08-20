@@ -16,14 +16,14 @@
         </tr>
         <tr ng-if='speaker != ""' component-display crow="speaker">
         </tr>
-        <tr ng-if='media_player != ""' component-display crow="media_player">
+        <tr ng-if='turntable != ""' component-display crow="turntable">
         </tr>
 
         <tr>
           <td></td>
           <td></td>
           <td>Total</td>
-          <td style="font-weight:bold"> {{ receiver.price + speaker.price + media_player.price | toDollar  }}</td>
+          <td style="font-weight:bold"> {{ receiver.price + speaker.price + turntable.price | toDollar  }}</td>
           <!-- <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td> -->
 
         </tr>
