@@ -1,7 +1,6 @@
 <form name="compForm">
-  <h4> {{ comp.category }} </h4>
-
-  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in comp.list'><option value="">Select</option></select>
+</br>
+  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
   <span ng-if="!selectedComponent">
 
@@ -47,7 +46,7 @@
     </div>
 
     <div ng-messages="compForm.compName.$error" >
-      <div ng-message="nameTaken">{{ comp.categoryn}} model already in database</div>
+      <div ng-message="nameTaken">{{ comp.category }} model already in database</div>
       <div ng-message="required">{{ comp.category }} model required</div>
     </div>
 
@@ -57,5 +56,7 @@
     </div>
 
   </div>
+
+
 
 </form>
