@@ -1,5 +1,5 @@
 <form name="compForm">
-</br>
+<h4> {{ comp.category }} </h4>
   <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
   <span ng-if="!selectedComponent">
