@@ -46,7 +46,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     DataService.updateStereo(ctrl.stereo)
     .then(function(result){
       $state.go($state.$current, null, { reload: true });
-      alert("stereo created!")
+      alert("stereo updated!")
     })
   }
 

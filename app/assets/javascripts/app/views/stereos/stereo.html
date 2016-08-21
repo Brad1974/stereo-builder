@@ -9,6 +9,8 @@
 <div ng-show="!ctrl.stereo.id || (ctrl.stereo.id && show)">
 <form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>
 
+    <h4 class="page-header text-center"> Stereo Form </h4>
+
     <h5>Stereo Profile Name: <input ng-model="ctrl.stereo.name" name="stereoName" required name-taken>
 
     <input ng-model="ctrl.stereo.hidden" name="stereoHidden" type="hidden" ng-required="ctrl.atLeastOne()">
@@ -25,7 +27,8 @@
 
     <component-form comp="comp" list="ctrl.list" ng-repeat="comp in ctrl.stereo.component_attributes"></component-form></br>
 
-    <input type="submit" value="submit stereo"></br></br>
+    <input ng-show="!ctrl.stereo.id" type="submit" value="submit stereo"></br></br>
+    <input ng-show="ctrl.stereo.id" type="submit" value="update stereo"></br></br>
 
 </form>
 </div>
