@@ -3,13 +3,21 @@ function nameTaken(DataService) {
       restrict: 'A',
       require: 'ngModel',
       link: function (scope, element, attrs, ctrl) {
+        if (element[0].getAttribute('name') == "stereoName")
+          { element[0].setAttribute('data', scope.ctrl.stereo.name) }
+        if (element[0].getAttribute('name') == "compName")
+          { element[0].setAttribute('data', scope.$parent.comp.name) }
+
         element[0].addEventListener('change', function(){
           value = element[0].value
           name = element[0].name
           if (name === 'stereoName')
 
+
           {
 
+            if (value != element[0].getAttribute('data'))
+            
             DataService.getStereos()
                 .then(function(result){
                   if ( (result.data.filter(function(x){return x.name === value })).length > 0   )
@@ -21,6 +29,8 @@ function nameTaken(DataService) {
           }
 
           else
+
+          if (value != element[0].getAttribute('data'))
 
           {
             DataService.getComponents()
