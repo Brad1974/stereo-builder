@@ -1,8 +1,10 @@
-<form name="compForm">
-<h4> {{ comp.category }} </h4>
-  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
+<form name="compForm" class="form-inline">
+  <div class="form-group">
+<h4> {{ comp.category }}</h4>
 
-  <span ng-if="!selectedComponent">
+  <select ng-show="show" name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
+
+  <span ng-show="!selectedComponent && !i" >
 
       <label> brand: </label> <input ng-model="comp.brand"
                                      name="compBrand"
@@ -20,18 +22,19 @@
                                      ng-required="comp.name.length > 0 || comp.brand.length > 0">
   </span>
 
-  <span ng-if="selectedComponent">
+  <span ng-show="selectedComponent || i">
     <table class="table">
       <thead>
         <tr>
-          <th class="col-md-1">Component</th>
+          <th class="col-md-1">Category</th>
           <th class="col-md-1">Brand</th>
           <th class="col-md-1">Name</th>
           <th class="col-md-1">Price</th>
         </tr>
       </thead>
       <tbody>
-        <tr component-display crow="selectedComponent"></tr>
+        <tr component-display crow="comp"></tr>
+        <p><input type="button" value="change price"> <input type="button" value="delete"></p>
       </tbody>
     </table>
   </span>
@@ -55,5 +58,5 @@
   </div>
 
 
-
+</div>
 </form>
