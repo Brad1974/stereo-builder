@@ -1,5 +1,5 @@
-<form name="compForm" class="form-inline" ng-model="comp">
-  <div class="form-group">
+<form name="compForm" ng-model="comp">
+
     <h4> {{ comp.category }} </h4>
 
 
@@ -22,13 +22,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-show="(!i && selectedComponent) || (i && !price)">
+          <tr ng-show="(!i && selectedComponent) || (i && (!price && comp.id))">
                 <td>{{comp.category}}</td>
                 <td>{{comp.brand}}</td>
                 <td>{{comp.name}}</td>
                 <td>{{comp.price | toDollar}}</td>
          </tr>
-          <tr ng-show="(!i && !selectedComponent) || (i && price)">
+          <tr ng-show="(!i && !selectedComponent) || (i && (price || !comp.id))">
                 <td>{{comp.category}}</td>
                 <td><input ng-hide="price"
                            ng-model="comp.brand"
@@ -71,5 +71,4 @@
 
     </div>
 
-  </div>
 </form>
