@@ -1,6 +1,6 @@
 function componentForm () {
   return {
-    scope: {comp: "=", list: "="},
+    scope: {comp: "=", list: "=", i: "="},
     replace: true,
     templateUrl: 'app/views/directive_templates/componentForm.html',
     controllerAs: 'cp',

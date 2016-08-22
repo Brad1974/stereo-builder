@@ -25,7 +25,7 @@
       <div ng-message="required">You need to add at least one component to your stereo</div>
     </div>
 
-    <component-form comp="comp" list="ctrl.list" ng-repeat="comp in ctrl.stereo.component_attributes"></component-form></br>
+    <component-form comp="comp" list="ctrl.list" i="ctrl.stereo.id" ng-repeat="comp in ctrl.stereo.component_attributes"></component-form></br>
 
     <input ng-show="!ctrl.stereo.id" type="submit" value="submit stereo"></br></br>
     <input ng-show="ctrl.stereo.id" type="submit" value="update stereo"></br></br>
