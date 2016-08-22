@@ -10,18 +10,27 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
   ctrl.list = [ receiver, speaker, turntable ]
 
-  loadStereo()
+  ctrl.stereo = { component_attributes: [ {price: "", category: "receiver"},
+                                          {price: "", category: "speaker"},
+                                          {price: "", category: "turntable"}
+                                        ]}
 
-  function loadStereo() {
-    if (stereo == "") { ctrl.stereo = { component_attributes:
-                        [ {price: "", category: "receiver"},
-                          {price: "", category: "speaker"},
-                          {price: "", category: "turntable"}
-                        ]
-                      }
-                    }
-    else ctrl.stereo = stereo.data
+  loadStereo();
+
+  function loadStereo(){
+    if ($stateParams.id) {
+    ctrl.stereo.name = stereo.data.name
+    ctrl.stereo.id = stereo.data.id
+    ctrl.stereo.component_attributes.forEach(function(c){
+      if (stereo.data.component_attributes.filter(function(x){return x.category == c.category}).length > 0) {
+        c.brand = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].brand;
+        c.name = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].name;
+        c.price = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].price;
+        c.id = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].id;
+      }
+    });
   }
+};
 
   ctrl.atLeastOne = function(){
     if ( ctrl.stereo.component_attributes.filter(function(c){return c.price != ""}).length > 0 )
