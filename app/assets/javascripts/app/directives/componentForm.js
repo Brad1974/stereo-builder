@@ -16,7 +16,8 @@ function componentForm ($state, DataService) {
         })
       }
     },
-    link: function (scope, element, attrs) {
+    require: 'ngModel',
+    link: function (scope, element, attrs, ctrl) {
       if (scope.list.filter(function(x){return x.length > 0}).length == 0)
       { element[0].querySelector('select').remove() }
       else {

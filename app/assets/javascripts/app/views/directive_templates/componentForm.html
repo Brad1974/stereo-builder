@@ -1,16 +1,19 @@
-<form name="compForm" class="form-inline">
+<form name="compForm" class="form-inline" ng-model="comp">
   <div class="form-group">
-<h4> {{ comp.category }}</h4>
+    <h4> {{ comp.category }} </h4>
 
-  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
-  <span ng-show="!selectedComponent && !i" >
+    <select ng-hide="price" name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
-      <label> brand: </label> <input ng-model="comp.brand"
+    <span ng-show="(!selectedComponent && !i) || price") >
+
+      <label> brand: </label> <input ng-hide="i"
+                                     ng-model="comp.brand"
                                      name="compBrand"
                                      ng-required="comp.name.length > 0 || comp.price.length > 0">
 
-      <label> model: </label>  <input ng-model="comp.name"
+      <label> model: </label> <input ng-hide="i"
+                                     ng-model="comp.name"
                                      name="compName"
                                      name-taken
                                      ng-required="comp.brand.length > 0 || comp.price.length > 0">
@@ -20,44 +23,46 @@
                                      integer
                                      only-numbers
                                      ng-required="comp.name.length > 0 || comp.brand.length > 0">
-  </span>
+    </span></br>
 
-  <span ng-show="selectedComponent || i">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-md-1">Category</th>
-          <th class="col-md-1">Brand</th>
-          <th class="col-md-1">Name</th>
-          <th class="col-md-1">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr component-display crow="comp"></tr>
-        <tr><td></td><td></td><td></td><td><input ng-show="price" ng-model="comp.price" name="compPrice" integer only-numbers></td></tr>
-        <p ng-show="i"><input type="button" ng-show="i && comp.name.length > 0" value="change component price" ng-click="price=true"> <input type="button" ng-show="i && comp.name.length > 0" value="remove component" ng-click="removeComp()"></p>
-      </tbody>
-    </table>
-  </span>
-
-  <div style="color:red">
-
-    <div ng-messages="compForm.compBrand.$error">
-      <div ng-message="required">{{ comp.category}} brand required</div>
+    <div ng-show="i">
+      <input type="button" ng-show="i && comp.name.length > 0" value="change price" name="change" ng-click="price=true">
+      <input type="button" ng-show="i && comp.name.length > 0" value="remove component" ng-click="removeComp()">
     </div>
 
-    <div ng-messages="compForm.compName.$error" >
-      <div ng-message="nameTaken">{{ comp.category }} model already in database</div>
-      <div ng-message="required">{{ comp.category }} model required</div>
-    </div>
+    <span ng-show="selectedComponent || i">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-md-1">Category</th>
+            <th class="col-md-1">Brand</th>
+            <th class="col-md-1">Name</th>
+            <th class="col-md-1">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>{{comp.category}}</td><td>{{comp.brand}}</td><td>{{comp.name}}</td><td>{{comp.price | toDollar}}</td></tr>
+        </tbody>
+      </table>
+    </span>
 
-    <div ng-messages="compForm.compPrice.$error" >
-      <div ng-message="onlyNumbers">Price must contain a valid numeric value</div>
-      <div ng-message="required"> {{ comp.category }} price required</div>
+    <div style="color:red">
+
+      <div ng-messages="compForm.compBrand.$error">
+        <div ng-message="required">{{ comp.category}} brand required</div>
+      </div>
+
+      <div ng-messages="compForm.compName.$error" >
+        <div ng-message="nameTaken">{{ comp.category }} model already in database</div>
+        <div ng-message="required">{{ comp.category }} model required</div>
+      </div>
+
+      <div ng-messages="compForm.compPrice.$error" >
+        <div ng-message="onlyNumbers">Price must contain a valid numeric value</div>
+        <div ng-message="required"> {{ comp.category }} price required</div>
+      </div>
+
     </div>
 
   </div>
-
-
-</div>
 </form>
