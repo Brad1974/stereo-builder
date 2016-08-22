@@ -18,27 +18,23 @@ class Stereo < ApplicationRecord
   end
 
   def handle_entry(compvalues)
-    if compvalues[:name] == ""
-      self.kill_association(compvalues)
+    # looks in database for component with your compvalues name;
+    # --if there it updates that record and then jumps to the next method
+    # --if not there it creates that record and adds it to the stereo
+    if c = Component.find_by(name: compvalues[:name])
+      c.update(price: compvalues[:price])
+      self.check_replace_or_add_association(c)
     else
-      if c = Component.find_by(name: compvalues[:name])
-        c.update(price: compvalues[:price])
-        self.check_replace_or_add_association(c)
-      else
-        c = Component.create(name: compvalues[:name], brand: compvalues[:brand], price: compvalues[:price], category: compvalues[:category])
-        self.check_replace_or_add_association(c)
-      end
+      c = self.components.create(name: compvalues[:name], brand: compvalues[:brand], price: compvalues[:price], category: compvalues[:category])
     end
-  end
-
-  def kill_association(compvalues)
-    if s = self.stereo_components.find{|sc| sc.component.category == compvalues[:category] }
-      s.destroy
-    end
-    self.save
   end
 
   def check_replace_or_add_association(compvalues)
+    # checks if stereo has component with your compvalues name
+    # --if it does, great, all done.
+    # --if not, it checks whether stereo has a component with the same category as compvalues
+    # ----if it does, then sub in compvalues id for the existing component's id in the join model
+    # ----if not, just push compvalues into stereo's components
     if self.stereo_components.find{|sc| sc.component_id == compvalues[:id]}
     else
       if s = self.stereo_components.find{|sc| sc.component.category == compvalues[:category]}
