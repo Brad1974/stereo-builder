@@ -5,32 +5,13 @@
 
     <select ng-hide="price" name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
-    <span ng-show="(!selectedComponent && !i) || price") >
-
-      <label> brand: </label> <input ng-hide="i"
-                                     ng-model="comp.brand"
-                                     name="compBrand"
-                                     ng-required="comp.name.length > 0 || comp.price.length > 0">
-
-      <label> model: </label> <input ng-hide="i"
-                                     ng-model="comp.name"
-                                     name="compName"
-                                     name-taken
-                                     ng-required="comp.brand.length > 0 || comp.price.length > 0">
-
-      <label> price: </label> <input ng-model="comp.price"
-                                     name="compPrice"
-                                     integer
-                                     only-numbers
-                                     ng-required="comp.name.length > 0 || comp.brand.length > 0">
-    </span></br>
 
     <div ng-show="i">
       <input type="button" ng-show="i && comp.name.length > 0" value="change price" name="change" ng-click="price=true">
       <input type="button" ng-show="i && comp.name.length > 0" value="remove component" ng-click="removeComp()">
     </div>
 
-    <span ng-show="selectedComponent || i">
+    <span>
       <table class="table">
         <thead>
           <tr>
@@ -41,7 +22,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>{{comp.category}}</td><td>{{comp.brand}}</td><td>{{comp.name}}</td><td>{{comp.price | toDollar}}</td></tr>
+          <tr ng-show="(!i && selectedComponent) || (i && !price)">
+                <td>{{comp.category}}</td>
+                <td>{{comp.brand}}</td>
+                <td>{{comp.name}}</td>
+                <td>{{comp.price | toDollar}}</td>
+         </tr>
+          <tr ng-show="(!i && !selectedComponent) || (i && price)">
+                <td>{{comp.category}}</td>
+                <td><input ng-hide="price"
+                           ng-model="comp.brand"
+                           name="compBrand"
+                           ng-required="comp.name.length > 0 || comp.price.length > 0">
+                           <span ng-show="price"> {{ comp.brand}}</span></td>
+
+                <td><input ng-hide="price"
+                           ng-model="comp.name"
+                           name="compName"
+                           name-taken
+                           ng-required="comp.brand.length > 0 || comp.price.length > 0">
+                           <span ng-show="price"> {{ comp.brand}}</span></td>
+
+                <td><input ng-model="comp.price"
+                           name="compPrice"
+                           integer
+                           only-numbers
+                           ng-required="comp.name.length > 0 || comp.brand.length > 0"></td>
+          </tr>
         </tbody>
       </table>
     </span>
