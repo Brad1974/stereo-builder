@@ -24,7 +24,7 @@
           <td></td>
           <td>Total</td>
           <td style="font-weight:bold"> {{ receiver.price + speaker.price + turntable.price | toDollar  }}</td>
-          <!-- <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td> -->
+          <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td>
 
         </tr>
       </tbody>

@@ -1,4 +1,4 @@
-function componentForm () {
+function componentForm ($state, DataService) {
   return {
     scope: {comp: "=", list: "=", i: "="},
     replace: true,
@@ -7,6 +7,13 @@ function componentForm () {
     controller: function($scope){
       if ($scope.list.filter(function(x){return x.length > 0}).length > 0)
       { $scope.menu = $scope.list.filter(function(x){return x[0].category == $scope.comp.category})[0] }
+
+      $scope.removeComp = function(){
+        DataService.removeComp($scope.comp, $scope.i)
+        .then(function(result){
+          $state.go($state.$current, null, { reload: true });;
+        })
+      }
     },
     link: function (scope, element, attrs) {
       if (scope.list.filter(function(x){return x.length > 0}).length == 0)

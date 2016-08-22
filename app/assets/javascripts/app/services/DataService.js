@@ -24,6 +24,12 @@ function DataService($http) {
     return $http.delete('/stereos/' + id);
   }
 
+  this.removeComp = function(comp, i) {
+    return $http.patch('/components/' + comp.id, i);
+  }
+
+
+
 }
 
 angular
