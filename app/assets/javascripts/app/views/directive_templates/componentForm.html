@@ -2,7 +2,7 @@
   <div class="form-group">
 <h4> {{ comp.category }}</h4>
 
-  <select ng-show="show" name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
+  <select name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
   <span ng-show="!selectedComponent && !i" >
 
@@ -34,7 +34,8 @@
       </thead>
       <tbody>
         <tr component-display crow="comp"></tr>
-        <p><input type="button" value="change component price"> <input type="button" value="remove component" ng-click="removeComp()"></p>
+        <tr><td></td><td></td><td></td><td><input ng-show="price" ng-model="comp.price" name="compPrice" integer only-numbers></td></tr>
+        <p ng-show="i"><input type="button" ng-show="i && comp.name.length > 0" value="change component price" ng-click="price=true"> <input type="button" ng-show="i && comp.name.length > 0" value="remove component" ng-click="removeComp()"></p>
       </tbody>
     </table>
   </span>

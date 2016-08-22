@@ -11,7 +11,8 @@ function componentForm ($state, DataService) {
       $scope.removeComp = function(){
         DataService.removeComp($scope.comp, $scope.i)
         .then(function(result){
-          $state.go($state.$current, null, { reload: true });;
+          $state.go($state.$current, null, { reload: true });
+          alert('Your stereo has been updated and selected component removed')
         })
       }
     },

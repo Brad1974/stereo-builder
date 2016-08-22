@@ -7,7 +7,10 @@ function componentDisplay () {
         var x = row.insertCell(-1);
         x.innerHTML = scope.crow.popularity }
     },
-    templateUrl: 'app/views/directive_templates/componentDisplay.html'
+    templateUrl: 'app/views/directive_templates/componentDisplay.html',
+    controller: function($scope){
+      if ($scope.crow.price == "") {$scope.crow.price = 0}
+    }
   }
 }
 
