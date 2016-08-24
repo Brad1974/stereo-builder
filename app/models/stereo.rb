@@ -29,19 +29,23 @@ class Stereo < ApplicationRecord
     end
   end
 
-  def check_replace_or_add_association(compvalues)
-    # checks if stereo has component with your compvalues name
+  def check_replace_or_add_association(comp)
+    # checks if stereo has component with your component's name
     # --if it does, great, all done.
     # --if not, it checks whether stereo has a component with the same category as compvalues
     # ----if it does, then sub in compvalues id for the existing component's id in the join model
-    # ----if not, just push compvalues into stereo's components
-    if self.stereo_components.find{|sc| sc.component_id == compvalues[:id]}
+    # ----if not, build a join table for that component and stereo
+    binding.pry
+    if self.stereo_components.find{|sc| sc.component_id == comp[:id]}
     else
-      if s = self.stereo_components.find{|sc| sc.component.category == compvalues[:category]}
-        s.update(component_id: compvalues[:id])
+      binding.pry
+      if s = self.stereo_components.find{|sc| sc.component.category == comp[:category]}
+        binding.pry
+        s.update(component_id: comp[:id])
         self.save
       else
-        self.components << compvalues
+        binding.pry
+        self.stereo_components.build(component_id: comp.id)
         self.save
       end
     end
