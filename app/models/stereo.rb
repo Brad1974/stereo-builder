@@ -35,16 +35,12 @@ class Stereo < ApplicationRecord
     # --if not, it checks whether stereo has a component with the same category as compvalues
     # ----if it does, then sub in compvalues id for the existing component's id in the join model
     # ----if not, build a join table for that component and stereo
-    binding.pry
     if self.stereo_components.find{|sc| sc.component_id == comp[:id]}
     else
-      binding.pry
       if s = self.stereo_components.find{|sc| sc.component.category == comp[:category]}
-        binding.pry
         s.update(component_id: comp[:id])
         self.save
       else
-        binding.pry
         self.stereo_components.build(component_id: comp.id)
         self.save
       end
