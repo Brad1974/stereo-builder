@@ -2,7 +2,7 @@
 
     <h4> {{ comp.category }} </h4>
 
-
+<!-- component menu will hide if you click on the button to change existing component's price -->
     <select ng-hide="price" name="select" ng-model="selectedComponent" ng-options='x as (x.brand + " " + x.name) for x in menu'><option value="">Select</option></select>
 
 
@@ -22,26 +22,29 @@
           </tr>
         </thead>
         <tbody>
+          <!-- this row will show when new + component's been selected, or when edit + component's populated -->
           <tr ng-show="(!i && selectedComponent) || (i && (!price && comp.id))">
                 <td>{{comp.category}}</td>
                 <td>{{comp.brand}}</td>
                 <td>{{comp.name}}</td>
                 <td>{{comp.price | toDollar}}</td>
          </tr>
+         <!-- this row is more complicated, will show when new + component's not been selected, or when edit + user wants to change price OR the component's not populated. further logic inside ensures that when want to change price, only price column transforms from text span to input-->
           <tr ng-show="(!i && !selectedComponent) || (i && (price || !comp.id))">
                 <td>{{comp.category}}</td>
                 <td><input ng-hide="price"
                            ng-model="comp.brand"
                            name="compBrand"
-                           ng-required="comp.name.length > 0 || comp.price.length > 0">
+                           ng-required="comp.name.length > 0 || comp.price > 0">
                            <span ng-show="price"> {{ comp.brand}}</span></td>
 
+                <!-- just fixed a bug where comp.name read comp.brand on line 47; also fixed ng-require - was "price.length > 0" now is "comp.price > 0" -->
                 <td><input ng-hide="price"
                            ng-model="comp.name"
                            name="compName"
                            name-taken
-                           ng-required="comp.brand.length > 0 || comp.price.length > 0">
-                           <span ng-show="price"> {{ comp.brand}}</span></td>
+                           ng-required="comp.brand.length > 0 || comp.price > 0">
+                           <span ng-show="price"> {{ comp.name}}</span></td>
 
                 <td><input ng-model="comp.price"
                            name="compPrice"

@@ -20,7 +20,7 @@ class Stereo < ApplicationRecord
   def handle_entry(compvalues)
     # looks in database for component with your compvalues name;
     # --if there it updates that record and then jumps to the next method
-    # --if not there it creates that record and adds it to the stereo
+    # --if not there it creates that record and adds it to the stereo (form is such that in this scenario there definitely isn't an existing component already associated with the steroe)
     if c = Component.find_by(name: compvalues[:name])
       c.update(price: compvalues[:price])
       self.check_replace_or_add_association(c)

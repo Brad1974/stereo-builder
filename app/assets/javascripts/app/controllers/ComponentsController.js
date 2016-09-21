@@ -1,10 +1,18 @@
-function ComponentsController($scope, components, $filter) {
+function ComponentsController($scope, components, $filter, DataService) {
 
   var ctrl = this
   ctrl.components = components.data
   ctrl.filteredComponents = ctrl.components
   ctrl.sortColumn = 'name';
   ctrl.sortReverse = false;
+
+
+  ctrl.increaseFavorite = function(thing){
+    debugger;
+    thing.favorite += 1
+    debugger;
+    DataService.removeComp(thing)
+  }
 
 
   ctrl.withinRange = function(){

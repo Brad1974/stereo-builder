@@ -17,7 +17,7 @@ function nameTaken(DataService) {
           {
 
             if (value != element[0].getAttribute('data'))
-            
+
             DataService.getStereos()
                 .then(function(result){
                   if ( (result.data.filter(function(x){return x.name === value })).length > 0   )
@@ -31,7 +31,7 @@ function nameTaken(DataService) {
           else
 
           if (value != element[0].getAttribute('data'))
-
+// no longer needed because my edit form doesn't give access to that field anymore...
           {
             DataService.getComponents()
             .then(function(result){

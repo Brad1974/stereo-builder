@@ -17,6 +17,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
 
   loadStereo();
 
+// if we are on a stereo show view this function will copy info frorm the stereo json object that we resolved in through app.js
   function loadStereo(){
     if ($stateParams.id) {
     ctrl.stereo.name = stereo.data.name
@@ -31,6 +32,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     });
   }
 };
+
 
   ctrl.atLeastOne = function(){
     if ( ctrl.stereo.component_attributes.filter(function(c){return c.price != ""}).length > 0 )

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814174343) do
+ActiveRecord::Schema.define(version: 20160906215723) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160814174343) do
     t.string   "category"
     t.string   "brand"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "favorite",   default: 0
   end
 
   create_table "stereo_components", force: :cascade do |t|

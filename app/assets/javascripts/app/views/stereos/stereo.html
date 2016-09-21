@@ -6,6 +6,7 @@
 
 <stereo-display stereo="ctrl.stereo"></stereo-display>
 
+<!-- form only appears if new stereo or if someone clicked on the "edit stereo" button -->
 <div ng-show="!ctrl.stereo.id || (ctrl.stereo.id && show)">
 <form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>
 
