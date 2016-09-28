@@ -25,7 +25,7 @@ function DataService($http) {
   }
 
   this.removeComp = function(comp, i) {
-    return $http.patch('/components/' + comp.id, i);
+    return $http.patch('/components/' + comp.id + '/remove_assoc', i);
   }
 
 
