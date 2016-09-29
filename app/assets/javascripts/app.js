@@ -4,7 +4,8 @@ angular
   $stateProvider
     .state('home', {
       url:'/',
-      templateUrl: 'app/views/home.html'
+      templateUrl: 'app/views/home.html',
+      controller: 'HomeController as ctrl'
     })
     .state('home.welcome', {
       url:'welcome',
@@ -55,6 +56,18 @@ angular
           return ""
         }
       }
+    })
+    .state('home.login', {
+      url: 'login',
+      templateUrl: 'app/views/auth/_login.html',
+      controller: 'AuthController',
+      data: { authRejected: true }
+    })
+    .state('home.register', {
+      url: 'register',
+      templateUrl: 'app/views/auth/_register.html',
+      controller: 'AuthController',
+      data: { authRejected: true },
     })
     $urlRouterProvider.otherwise('welcome');
 })
