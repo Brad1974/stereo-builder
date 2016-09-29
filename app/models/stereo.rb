@@ -1,4 +1,5 @@
 class Stereo < ApplicationRecord
+  has_many :comments
   belongs_to :user, optional: true
   has_many :stereo_components, dependent: :destroy
   has_many :components, through: :stereo_components
