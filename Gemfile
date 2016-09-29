@@ -21,6 +21,8 @@ gem 'active_model_serializers'
 gem 'pry'
 
 gem 'sprockets', '3.6.3'
+
+gem 'devise'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

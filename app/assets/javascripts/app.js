@@ -1,5 +1,5 @@
 angular
-.module('app', ['ui.router', 'templates', 'ngMessages', ])
+.module('app', ['ui.router', 'templates', 'ngMessages', 'Devise' ])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
@@ -52,7 +52,7 @@ angular
           return DataService.getComponents();
         },
         stereo: function ($stateParams, DataService) {
-          return "" 
+          return ""
         }
       }
     })

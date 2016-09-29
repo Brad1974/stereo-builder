@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :stereos, except: [:new, :edit]
   get 'components' => 'components#index'
   patch 'components/:id/remove_assoc' => 'components#remove_assoc'
