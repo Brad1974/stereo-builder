@@ -1,8 +1,9 @@
-function StereoController($state, $stateParams, $filter, components, stereo, DataService) {
+function StereoController($state, $stateParams, $filter, components, stereo, comments, DataService) {
 
   var ctrl = this
 
   ctrl.components = components.data
+  ctrl.comments = comments.data
 
   var receiver = ctrl.components.filter(function(x) { return x.category === "receiver" });
   var speaker = ctrl.components.filter(function(x) { return x.category === "speaker" });
@@ -16,6 +17,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
                                         ]}
 
   loadStereo();
+
 
 // if we are on a stereo show view this function will copy info frorm the stereo json object that we resolved in through app.js
   function loadStereo(){

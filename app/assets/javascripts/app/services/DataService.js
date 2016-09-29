@@ -4,6 +4,10 @@ function DataService($http) {
     return $http.get('/stereos/' + id);
   }
 
+  this.getComments = function(id) {
+    return $http.get('/stereos/' + id + '/comments')
+  }
+
   this.getStereos = function() {
     return $http.get('/stereos.json');
   }

@@ -42,6 +42,10 @@ angular
         components: function (DataService) {
           return DataService.getComponents();
         },
+        comments: function ($stateParams, DataService) {
+          debugger;
+          return DataService.getComments($stateParams.id);
+        }
       }
     })
     .state('home.newStereo', {
@@ -53,6 +57,9 @@ angular
           return DataService.getComponents();
         },
         stereo: function ($stateParams, DataService) {
+          return ""
+        },
+        comments: function ($stateParams, DataService) {
           return ""
         }
       }
