@@ -22,6 +22,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     if ($stateParams.id) {
     ctrl.stereo.name = stereo.data.name
     ctrl.stereo.id = stereo.data.id
+    ctrl.stereo.user = stereo.data.user
     ctrl.stereo.component_attributes.forEach(function(c){
       if (stereo.data.component_attributes.filter(function(x){return x.category == c.category}).length > 0) {
         c.brand = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].brand;
@@ -58,7 +59,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, Dat
     .then(function(result){
       $state.go($state.$current, null, { reload: true });
       alert("stereo updated!")
-    })
+    }, function(error){alert("not authorized")})
   }
 
   ctrl.deleteStereo = function(){

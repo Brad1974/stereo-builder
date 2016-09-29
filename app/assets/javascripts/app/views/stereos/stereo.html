@@ -4,10 +4,15 @@
   <h4 ng-show="ctrl.stereo.id && show">Edit Your Stereo</h4>
 </div>
 
+<p> logged in as: {{ user.email }}</p>
+
+<p> stereo owner: {{ ctrl.stereo.user.email }}</p>
+
+
 <stereo-display stereo="ctrl.stereo"></stereo-display>
 
 <!-- form only appears if new stereo or if someone clicked on the "edit stereo" button -->
-<div ng-show="!ctrl.stereo.id || (ctrl.stereo.id && show)">
+<div ng-if="((user.id == ctrl.stereo.user.id) && (!ctrl.stereo.id || (ctrl.stereo.id && show))) || !ctrl.stereo.id">
 <form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>
 
     <h4 class="page-header text-center"> Stereo Form </h4>
@@ -34,5 +39,7 @@
 </form>
 </div>
 
-<input type="button" value="edit stereo" ng-click="show=true" ng-show="ctrl.stereo.id && !show">
+<div ng-show="user.id == ctrl.stereo.user.id">
+<input  type="button" value="edit stereo" ng-click="show=true" ng-show="ctrl.stereo.id && !show">
 <input type="button" value="delete stereo" ng-show="ctrl.stereo.id" ng-click="ctrl.deleteStereo()">
+</div>
