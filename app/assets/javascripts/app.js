@@ -43,7 +43,6 @@ angular
           return DataService.getComponents();
         },
         comments: function ($stateParams, DataService) {
-          debugger;
           return DataService.getComments($stateParams.id);
         }
       }

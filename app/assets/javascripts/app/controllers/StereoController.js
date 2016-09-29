@@ -4,6 +4,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
 
   ctrl.components = components.data
   ctrl.comments = comments.data
+  ctrl.newcomment = ""
 
   var receiver = ctrl.components.filter(function(x) { return x.category === "receiver" });
   var speaker = ctrl.components.filter(function(x) { return x.category === "speaker" });
@@ -47,6 +48,15 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
   ctrl.submit = function(){
     ctrl.stereo.id? ctrl.updateStereo() : ctrl.addStereo()
   }
+
+  ctrl.submitComment = function(){
+    DataService.postComment(ctrl.stereo.id, ctrl.newcomment)
+    .then(function(){
+      $state.go($state.$current, null, { reload: true });
+      alert("comment posted!");
+    })
+
+  };
 
   ctrl.addStereo = function() {
     DataService.postStereo(ctrl.stereo)

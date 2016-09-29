@@ -14,6 +14,12 @@
 <ul ng-repeat="comment in ctrl.comments">
   <li> {{comment.content}}</li>
 </ul>
+
+<form name="comment_form">
+  <input ng-model="ctrl.newcomment" placeholder="enter comment here">
+  <input type="submit" ng-click="ctrl.submitComment()">
+</form></br>
+
 <!-- form only appears if new stereo or if someone clicked on the "edit stereo" button -->
 <div ng-if="((user.id == ctrl.stereo.user.id) && (!ctrl.stereo.id || (ctrl.stereo.id && show))) || !ctrl.stereo.id">
 <form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>

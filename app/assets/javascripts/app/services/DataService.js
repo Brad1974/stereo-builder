@@ -8,6 +8,10 @@ function DataService($http) {
     return $http.get('/stereos/' + id + '/comments')
   }
 
+  this.postComment = function(id, newcomment){
+    return $http.post('/stereos/' + id + '/comments', {newcomment} )
+  }
+
   this.getStereos = function() {
     return $http.get('/stereos.json');
   }
