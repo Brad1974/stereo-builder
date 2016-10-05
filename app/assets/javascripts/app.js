@@ -1,6 +1,6 @@
 angular
 .module('app', ['ui.router', 'templates', 'ngMessages', 'Devise' ])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url:'/',
@@ -16,9 +16,9 @@ angular
       templateUrl: 'app/views/components/components.html',
       controller: 'ComponentsController as ctrl',
       resolve: {
-        components: function (DataService) {
+        components: ["DataService", function (DataService) {
           return DataService.getComponents();
-        }
+        }]
       }
     })
     .state('home.stereoindex', {
@@ -26,9 +26,9 @@ angular
       templateUrl: 'app/views/stereos/index.html',
       controller: 'StereosController as ctrl',
       resolve: {
-        stereos: function (DataService) {
+        stereos: ["DataService", function (DataService) {
           return DataService.getStereos();
-        }
+        }]
       }
     })
     .state('home.show', {
@@ -36,15 +36,15 @@ angular
       templateUrl: 'app/views/stereos/stereo.html',
       controller: 'StereoController as ctrl',
       resolve: {
-        stereo: function ($stateParams, DataService) {
+        stereo: ["$stateParams", "DataService", function ($stateParams, DataService) {
           return DataService.getStereo($stateParams.id);
-        },
-        components: function (DataService) {
+        }],
+        components: ["DataService", function (DataService) {
           return DataService.getComponents();
-        },
-        comments: function ($stateParams, DataService) {
+        }],
+        comments: ["$stateParams", "DataService", function ($stateParams, DataService) {
           return DataService.getComments($stateParams.id);
-        }
+        }]
       }
     })
     .state('home.newStereo', {
@@ -52,15 +52,15 @@ angular
       templateUrl: 'app/views/stereos/stereo.html',
       controller: 'StereoController as ctrl',
       resolve: {
-        components: function (DataService) {
+        components: ["DataService", function (DataService) {
           return DataService.getComponents();
-        },
-        stereo: function ($stateParams, DataService) {
+        }],
+        stereo: ["$stateParams", "DataService", function ($stateParams, DataService) {
           return ""
-        },
-        comments: function ($stateParams, DataService) {
+        }],
+        comments: ["$stateParams", "DataService", function ($stateParams, DataService) {
           return ""
-        }
+        }]
       }
     })
     .state('home.login', {
@@ -76,4 +76,4 @@ angular
       data: { authRejected: true },
     })
     $urlRouterProvider.otherwise('welcome');
-})
+}])

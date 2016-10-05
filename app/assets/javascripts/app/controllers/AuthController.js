@@ -1,3 +1,5 @@
+AuthController.$inject = ["$scope", "$state", "Auth"];
+
 function AuthController($scope, $state, Auth) {
 
   $scope.login = function() {

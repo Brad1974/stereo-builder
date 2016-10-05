@@ -8,9 +8,9 @@ function componentDisplay () {
         x.innerHTML = scope.crow.popularity }
     },
     templateUrl: 'app/views/directive_templates/componentDisplay.html',
-    controller: function($scope){
+    controller: ["$scope", function($scope){
       if ($scope.crow.price == "") {$scope.crow.price = 0}
-    }
+    }]
   }
 }
 

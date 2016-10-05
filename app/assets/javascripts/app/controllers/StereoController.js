@@ -1,3 +1,5 @@
+StereoController.$inject = ["$state", "$stateParams", "$filter", "components", "stereo", "comments", "DataService"];
+
 function StereoController($state, $stateParams, $filter, components, stereo, comments, DataService) {
 
   var ctrl = this

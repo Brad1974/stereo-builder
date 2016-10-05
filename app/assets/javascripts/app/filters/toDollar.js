@@ -1,3 +1,5 @@
+ToDollar.$inject = ["$filter"];
+
 function ToDollar($filter) {
   return function (str) {
     return $filter('currency')(str / 100);

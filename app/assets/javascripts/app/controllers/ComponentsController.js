@@ -1,3 +1,5 @@
+ComponentsController.$inject = ["$scope", "components", "$filter", "DataService"];
+
 function ComponentsController($scope, components, $filter, DataService) {
 
   var ctrl = this

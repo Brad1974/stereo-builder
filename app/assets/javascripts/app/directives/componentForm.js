@@ -1,10 +1,10 @@
-function componentForm ($state, DataService) {
+componentForm.$inject = ["$state", "DataService"];function componentForm ($state, DataService) {
   return {
     scope: {comp: "=", list: "=", i: "="},
     replace: true,
     templateUrl: 'app/views/directive_templates/componentForm.html',
     controllerAs: 'cp',
-    controller: function($scope){
+    controller: ["$scope", function($scope){
       if ($scope.list.filter(function(x){return x.length > 0}).length > 0)
       { $scope.menu = $scope.list.filter(function(x){return x[0].category == $scope.comp.category})[0] }
 
@@ -15,7 +15,7 @@ function componentForm ($state, DataService) {
           alert('Your stereo has been updated and selected component removed')
         })
       }
-    },
+    }],
     require: 'ngModel',
     link: function (scope, element, attrs, ctrl) {
       // if there are no components to populate menu, remove it

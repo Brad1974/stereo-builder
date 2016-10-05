@@ -1,3 +1,5 @@
+StereosController.$inject = ["stereos", "$state", "$stateParams"];
+
 function StereosController(stereos, $state, $stateParams) {
 
   var ctrl = this

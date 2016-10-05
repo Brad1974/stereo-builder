@@ -1,3 +1,5 @@
+DataService.$inject = ["$http"];
+
 function DataService($http) {
 
   this.getStereo = function(id) {
