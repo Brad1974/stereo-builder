@@ -1,34 +1,31 @@
-<div>
+<div class="well">
+  <h4>Stereo Profile Name: {{ stereo.name }} </h4>
+  <p>Profile owner: {{ stereo.user.email }} </p>
 
   <table class="table">
-  <h4> Stereo Profile for: {{stereo.name}} </h4>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-if='receiver != ""' component-display crow="receiver">
+      </tr>
+      <tr ng-if='speaker != ""' component-display crow="speaker">
+      </tr>
+      <tr ng-if='turntable != ""' component-display crow="turntable">
+      </tr>
 
-      <thead>
-        <tr>
-          <th>Component</th>
-          <th>Brand</th>
-          <th>Model</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- these ng-ifs not needed anymore - I tried for awhile to work with stereo objects with varying numbers of component_attributes and this was part of that attempt -->
-        <tr ng-if='receiver != ""' component-display crow="receiver">
-        </tr>
-        <tr ng-if='speaker != ""' component-display crow="speaker">
-        </tr>
-        <tr ng-if='turntable != ""' component-display crow="turntable">
-        </tr>
-
-        <tr>
-          <td></td>
-          <td></td>
-          <td>Total</td>
-          <td style="font-weight:bold"> {{ receiver.price + speaker.price + turntable.price | toDollar  }}</td>
-          <td ng-show="stereo.id" style="font-weight:bold"> {{ total() /100 | currency }}</td>
-
-        </tr>
-      </tbody>
-    </table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td style="font-weight:bold"> {{ receiver.price + speaker.price + turntable.price | toDollar  }}</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
