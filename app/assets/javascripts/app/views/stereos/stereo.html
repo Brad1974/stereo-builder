@@ -1,4 +1,4 @@
-<div class="page-header text-center">
+<div class="text-center">
   <h4 ng-show="!ctrl.stereo.id"> Create New Stereo Profile </h4>
   <h4 ng-show="ctrl.stereo.id && !show"> Stereo Profile </h4>
   <h4 ng-show="ctrl.stereo.id && show">Edit Your Stereo</h4>
@@ -7,18 +7,27 @@
 
 <stereo-display stereo="ctrl.stereo"></stereo-display>
 
-<ul ng-repeat="comment in ctrl.comments">
-  <li> {{comment.content}}</li>
-</ul>
+<h4 ng-show="ctrl.stereo.id" class="text-center">Comments</h4>
+<div ng-repeat="comment in ctrl.comments">
+  <div class="list-group-item">
+    <div class="list-group-item-text">
+    <p> {{comment.user.email}} wrote: </p>
+     <li> {{comment.content}}</li>
+   </div>
+  </div>
+</br>
+</div>
 
-<form name="comment_form">
-  <input ng-model="ctrl.newcomment" placeholder="enter comment here">
-  <input type="submit" ng-click="ctrl.submitComment()">
-</form></br>
+<div ng-if="ctrl.stereo.id">
+
+    <textarea type="text" ng-model="ctrl.newcomment" placeholder="enter comment here" class="form-control"></textarea></br>
+    <input type="submit" ng-click="ctrl.submitComment()" class="btn btn-primary">
+  </br>
+</div>
 
 
 <div ng-if="((user.id == ctrl.stereo.user.id) && (!ctrl.stereo.id || (ctrl.stereo.id && show))) || !ctrl.stereo.id">
-<form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>
+  <form name="profileForm" ng-submit="profileForm.$valid && ctrl.submit()" novalidate>
 
     <h4 class= "text-center"> Stereo Form </h4>
     <div class="well">
@@ -26,7 +35,6 @@
     <h5>Stereo Profile Name: <input ng-model="ctrl.stereo.name" name="stereoName" required name-taken></br></br>
 
     <input ng-model="ctrl.stereo.hidden" name="stereoHidden" type="hidden" ng-required="ctrl.atLeastOne()">
-
 
     <div style="color:red" ng-messages="profileForm.stereoName.$error" ng-if="profileForm.stereoName.$touched || profileForm.$submitted">
       <div ng-message="required">Profile Name required</div>
@@ -42,8 +50,8 @@
     <input ng-show="!ctrl.stereo.id" type="submit" value="submit stereo"></br></br>
     <input ng-show="ctrl.stereo.id" type="submit" value="update stereo"></br></br>
 
-</form>
-</div>
+  </form>
+  </div>
 </div>
 
 <div ng-show="user.id == ctrl.stereo.user.id">
