@@ -4,7 +4,6 @@ function AuthController($scope, $state, Auth) {
 
   $scope.login = function() {
     Auth.login($scope.user).then(function(result){
-      debugger;
       $state.go('home.stereoindex');
     }, function(error){
       alert("invalid email or password")
@@ -12,11 +11,14 @@ function AuthController($scope, $state, Auth) {
   };
 
   $scope.register = function() {
-    debugger;
     Auth.register($scope.user).then(function(){
-      debugger;
       $state.go('home.stereoindex');
-    });
+    }, function(error){
+      if (error.data.errors.email[0] == ("has already been taken"))
+        { alert("that email has already been taken") }
+      else alert("invalid email or password")
+      }
+    );
   };
 
 }
