@@ -2,12 +2,22 @@
   <h1>Log In</h1>
 </div>
 
-<form ng-submit="login()">
+<form name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
   <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+    <input class="form-control" name="email" type="email" placeholder="Email" ng-model="user.email" email><br>
   </div>
   <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+    <input class="form-control" name="password" minlength="6" type="password" placeholder="Password" ng-model="user.password"><br>
   </div>
-  <input type="submit" class="btn btn-default" value="Log In">
+  <input type="submit" class="btn btn-default" value="Log In"></br></br>
+
+
+  <div style="color:red" ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
+    <div ng-message="email">Invalid email</div>
+  </div>
+
+  <div style="color:red" ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+  <div ng-message="minlength">Your password should be a minimum of 6 characters</div>
+</div>
+
 </form>
