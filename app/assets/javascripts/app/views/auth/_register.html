@@ -1,13 +1,24 @@
-<div class="page-header">
-  <h1>Register</h1>
+<h4 class="text-center">Register</h4>
+<div class="well">
+
+
+<form name="registerForm" ng-submit="registerForm.$valid && register()" novalidate>
+  <div class="input-group">
+    <input class="form-control" name="email" type="email" placeholder="Email" ng-model="user.email" email><br>
+  </div>
+  <div class="input-group">
+    <input class="form-control" name="password" minlength="6" type="password" placeholder="Password" ng-model="user.password"><br>
+  </div></br>
+  <input type="submit" class="btn btn-default" value="Log In"></br></br>
+
+
+  <div style="color:red" ng-messages="registerForm.email.$error" ng-if="registerForm.email.$touched">
+    <div ng-message="email">Invalid email</div>
+  </div>
+
+  <div style="color:red" ng-messages="registerForm.password.$error" ng-if="registerForm.password.$touched">
+  <div ng-message="minlength">Your password should be a minimum of 6 characters</div>
 </div>
 
-<form ng-submit="register()">
-  <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
-  </div>
-  <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-  </div>
-  <input type="submit" class="btn btn-default" value="Register">
 </form>
+</div>
