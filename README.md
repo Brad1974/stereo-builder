@@ -4,27 +4,31 @@
 
 # Description
 
-Angular Stereo Builder is a very basic Rails and Angular based web app that allows a user to assemble a stereo profile from an existing library of components or components that they create themselves.
+Angular Stereo Builder is a web application built with a Rails back end and Angular front end that allows a user to assemble a stereo profile from an existing library of components or components that they create themselves. It also incorporates Devise and angular-devise to allow user registration and comments.
 
 
 # Installation
 
 To install:
 
-1. Fork and clone this repo
-2. From your terminal, enter:
+First, fork and clone this repo.
+
+Then from your terminal, enter:
 ```bash
 bundle install
 ```
-3. Then enter:
+
+Then enter:
 ```bash
 npm install
 ```
-4. Then:
+
+Then:
 ```bash
 rake db:migrate
 ```
-5. If you want a small library of stereo components to start with, then also enter in:
+
+If you want a small library of stereo components to start with, then also enter in:
 ```bash
 rake db:seed
 ```
