@@ -29,6 +29,10 @@ rake db:migrate
 rake db:seed
 ```
 
+# Usage
+
+You may view any existing stereo profiles as a guest, but to create, edit or comment on a stereo profile, you must register an account.
+
 
 # license
 
