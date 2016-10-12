@@ -3,14 +3,24 @@
 
 
 <form name="registerForm" ng-submit="registerForm.$valid && register()" novalidate>
+
   <div class="input-group">
     <input class="form-control" name="email" type="email" placeholder="Email" ng-model="user.email" email><br>
   </div>
+
+  <div class="input-group">
+    <input class="form-control" name="username" type="username" placeholder="Username" ng-model="user.username" required ><br>
+  </div>
+
+
   <div class="input-group">
     <input class="form-control" name="password" minlength="6" type="password" placeholder="Password" ng-model="user.password"><br>
   </div></br>
   <input type="submit" class="btn btn-default" value="Log In"></br></br>
 
+  <div style="color:red" ng-messages="registerForm.username.$error" ng-if="registerForm.username.$touched">
+    <div ng-message="required">Requires a username</div>
+  </div>
 
   <div style="color:red" ng-messages="registerForm.email.$error" ng-if="registerForm.email.$touched">
     <div ng-message="email">Invalid email</div>
