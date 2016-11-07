@@ -2,6 +2,7 @@ HomeController.$inject = ["$scope", "Auth", "$state"];
 
 function HomeController($scope, Auth, $state) {
 
+
   $scope.signedIn = Auth.isAuthenticated;
   $scope.logout = Auth.logout;
 

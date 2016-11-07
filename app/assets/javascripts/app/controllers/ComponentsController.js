@@ -8,15 +8,6 @@ function ComponentsController($scope, components, $filter, DataService) {
   ctrl.sortColumn = 'name';
   ctrl.sortReverse = false;
 
-
-  ctrl.increaseFavorite = function(thing){
-    debugger;
-    thing.favorite += 1
-    debugger;
-    DataService.removeComp(thing)
-  }
-
-
   ctrl.withinRange = function(){
     ctrl.components = components.data.filter(function(x){ if (ctrl.min <= x.price == x.price <= ctrl.max){ return x }})
   }

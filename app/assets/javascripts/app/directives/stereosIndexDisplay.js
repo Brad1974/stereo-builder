@@ -7,7 +7,6 @@ function stereosIndexDisplay () {
       $scope.receiver = $scope.stereo.component_attributes.filter(function(x){return x.category == "receiver"})[0] || "";
       $scope.speaker = $scope.stereo.component_attributes.filter(function(x){return x.category == "speaker"})[0] || "";
       $scope.turntable = $scope.stereo.component_attributes.filter(function(x){return x.category == "turntable"})[0] || "";
-
     }]
   }
 }

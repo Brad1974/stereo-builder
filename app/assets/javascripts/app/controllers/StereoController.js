@@ -6,7 +6,6 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
 
   ctrl.components = components.data
   ctrl.comments = comments.data
-  ctrl.newcomment = ""
 
   var receiver = ctrl.components.filter(function(x) { return x.category === "receiver" });
   var speaker = ctrl.components.filter(function(x) { return x.category === "speaker" });
@@ -22,7 +21,6 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
   loadStereo();
 
 
-// if we are on a stereo show view this function will copy info frorm the stereo json object that we resolved in through app.js
   function loadStereo(){
     if ($stateParams.id) {
     ctrl.stereo.name = stereo.data.name
@@ -36,6 +34,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
         c.id = stereo.data.component_attributes.filter(function(x){return x.category == c.category})[0].id;
       }
     });
+    ctrl.newcomment = {content: "", stereo_id: ctrl.stereo.id}
   }
 };
 
@@ -52,7 +51,7 @@ function StereoController($state, $stateParams, $filter, components, stereo, com
   }
 
   ctrl.submitComment = function(){
-    DataService.postComment(ctrl.stereo.id, ctrl.newcomment)
+    DataService.postComment(ctrl.newcomment)
     .then(function(){
       $state.go($state.$current, null, { reload: true });
       alert("comment posted!");
